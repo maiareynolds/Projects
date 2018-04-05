@@ -61,7 +61,7 @@ if event.key in word:#get to this
 if word==word?:#work on
     Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0xBBFFFF,1)),Color(0xBBFFFF,1)))
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
-    Sprite(TextAsset("Congrats!!!"
+    Sprite(TextAsset("Congrats!!!"#work on
 App().run()
 
 
