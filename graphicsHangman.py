@@ -4,7 +4,7 @@
 
 from ggame import *
 from random import randint
-
+"""
 def pickWord: #picks a "random" word from a list of words
     i=randint(1,5)
     if i==1:
@@ -19,7 +19,8 @@ def pickWord: #picks a "random" word from a list of words
         word=""
 
 def wordComplete: #returns True if all letters in word have been guessed, false otherwise
-    ...
+    if "a" in word:
+        ...
 
 def printHangman(incorrect): #prints out new body part with each wrong guess
     if incorrect==1:
@@ -31,8 +32,27 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
 if __name__=="__main__":
     ...
 
+#Graphics: (for now)
+"""
 
 
+word="Hello"
+x=0
+for ch in word:
+    Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
+    x+=30
+Sprite(LineAsset(0,250,LineStyle(4,Color(0x000000,1))),(200,50))
+Sprite(LineAsset(100,0,LineStyle(4,Color(0x000000,1))),(200,50))
+Sprite(LineAsset(0,40,LineStyle(4,Color(0x000000,1))),(300,50))
+Sprite(LineAsset(150,0,LineStyle(3,Color(0x000000,1))),(125,300))
+App().run()
+
+
+
+"""
+if event.key not in word...#figure out the keys
+Sprite(CircleAsset(5,black,...#look up rest
+"""
 """
 -------------------------------------------------------
 Useful detail - event.key contains the key that was pressed to trigger the key press function. You will need to listen for 26 different keys (use a loop to shorten this code!)
