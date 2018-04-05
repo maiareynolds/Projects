@@ -35,18 +35,24 @@ if __name__=="__main__":
 #Graphics: (for now)
 """
 
-Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0xBBFFFF,1)),Color(0xBBFFFF,1)))
-Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
-Sprite(RectangleAsset(1200,40,LineStyle(3,Color(0x5CACEE,1)),Color(0x5CACEE,1)))
+#Background Graphics
+Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0x9FB6CD,1)),Color(0x9FB6CD,1)))#sky
+Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x8B4726,1)),Color(0x8B4726,1)),(0,300))#ground
+Sprite(RectangleAsset(1200,40,LineStyle(3,Color(0x5CACEE,1)),Color(0x5CACEE,1)))#letter box
+#Letter Line Graphics
 word="Hello"
 x=0
 for ch in word:
     Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
     x+=30
-Sprite(LineAsset(0,250,LineStyle(4,Color(0x000000,1))),(200,50))
-Sprite(LineAsset(100,0,LineStyle(4,Color(0x000000,1))),(200,50))
-Sprite(LineAsset(0,40,LineStyle(4,Color(0x000000,1))),(300,50))
-Sprite(LineAsset(150,0,LineStyle(3,Color(0x000000,1))),(125,300))
+#Structure Graphic:
+Sprite(LineAsset(0,250,LineStyle(6,Color(0x000000,1))),(200,50))#large down
+Sprite(LineAsset(100,0,LineStyle(6,Color(0x000000,1))),(200,50))#small across
+Sprite(LineAsset(0,40,LineStyle(6,Color(0x000000,1))),(300,50))#small down
+Sprite(LineAsset(150,0,LineStyle(6,Color(0x000000,1))),(125,300))#large across
+
+#blue sky color:BBFFFF
+#green ground color:00FF7F
 App().run()
 
 
