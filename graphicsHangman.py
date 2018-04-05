@@ -35,7 +35,9 @@ if __name__=="__main__":
 #Graphics: (for now)
 """
 
-
+Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0xBBFFFF,1)),Color(0xBBFFFF,1)))
+Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
+Sprite(RectangleAsset(1200,40,LineStyle(3,Color(0x5CACEE,1)),Color(0x5CACEE,1)))
 word="Hello"
 x=0
 for ch in word:
