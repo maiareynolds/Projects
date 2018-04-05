@@ -51,15 +51,23 @@ Sprite(LineAsset(100,0,LineStyle(6,Color(0x000000,1))),(200,50))#small across
 Sprite(LineAsset(0,40,LineStyle(6,Color(0x000000,1))),(300,50))#small down
 Sprite(LineAsset(150,0,LineStyle(6,Color(0x000000,1))),(125,300))#large across
 
-#blue sky color:BBFFFF
-#green ground color:00FF7F
+def keyPress(event):#get to this
+    return
+App().listenKeyEvent("press",keyPress)#figure out    
+if event.key in word:#get to this
+    print(key)
+
+
+if word==word?:#work on
+    Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0xBBFFFF,1)),Color(0xBBFFFF,1)))
+    Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
+    Sprite(TextAsset(
 App().run()
 
 
 
 """
 if event.key not in word...#figure out the keys
-Sprite(CircleAsset(5,black,...#look up rest
 """
 """
 -------------------------------------------------------
