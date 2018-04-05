@@ -40,7 +40,7 @@ Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0x9FB6CD,1)),Color(0x9FB6CD,1))
 Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x8B4726,1)),Color(0x8B4726,1)),(0,300))#ground
 Sprite(RectangleAsset(1200,40,LineStyle(3,Color(0x5CACEE,1)),Color(0x5CACEE,1)))#letter box
 #Letter Line Graphics
-word="Hello"
+word="watermelon"
 x=0
 for ch in word:
     Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
