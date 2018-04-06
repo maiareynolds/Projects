@@ -51,6 +51,16 @@ Sprite(LineAsset(100,0,LineStyle(6,Color(0x000000,1))),(200,50))#small across
 Sprite(LineAsset(0,40,LineStyle(6,Color(0x000000,1))),(300,50))#small down
 Sprite(LineAsset(150,0,LineStyle(6,Color(0x000000,1))),(125,300))#large across
 
+Sprite(TextAsset("Hangman",fill=Color(0x00CED1,1),style="15pt Times"),(930,500))#name
+
+#Man Graphics
+Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
+Sprite(LineAsset(0,70,LineStyle(4,Color(0xFF1493,1))),(303,120))#body
+Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(274,125))#arm1
+Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(303,125))#arm2
+Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
+Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
+"""
 def keyPress(event):#get to this
     return
 App().listenKeyEvent("press",keyPress)#figure out    
@@ -61,7 +71,7 @@ if event.key in word:#get to this
 if word==word?:#work on
     Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0xBBFFFF,1)),Color(0xBBFFFF,1)))
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
-    Sprite(TextAsset("Congrats!!!"#work on
+    Sprite(TextAsset("Congrats!!!"#work on"""
 App().run()
 
 
