@@ -18,28 +18,38 @@ def pickWord: #picks a "random" word from a list of words
     else:
         word=""
 
-def wordComplete: #returns True if all letters in word have been guessed, false otherwise
+def wordComplete(): #returns True if all letters in word have been guessed, false otherwise
     Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0xBBFFFF,1)),Color(0xBBFFFF,1)))
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
-    Sprite(TextAsset("Congrats!!!"#work on
-
-def printHangman(incorrect): #prints out new body part with each wrong guess
-    if incorrect==1:
-        Sprite(...
+    Sprite(TextAsset("True, the word is",fill=Color(0xFF1493,1),style="40pt Times bold"),(150,150)))#work on
+    Sprite(TextAsset(word,fill=Color(0xFF1493,1),style="40pt Times bold",(250,200)))
 """
+def printHangman(incorrect): #prints out new body part with each wrong guess
+    x2=0
+    if event.key not in word:
+        x2+=1
+        if x2==1:
+            Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
+        elif x2==2:
+            Sprite(LineAsset(0,70,LineStyle(4,Color(0xFF1493,1))),(303,120))#body
+        elif x2==3:
+            Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(274,125))#arm1
+        elif x2==4:
+            Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(303,125))#arm2
+        elif x2==5:
+            Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
+        else:
+            Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
+
 def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
     letter=event.key
     print(letter)
     x1=0
-    x2=0
     for ch in word:
         if letter==ch:
             Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
-            x1+=30
-        else:
-            Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x2,0))
-            x1+=30
-            x2+=30
+        x1+=30
+        Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
 
 if __name__=="__main__":
     #Background Graphics
@@ -59,7 +69,7 @@ x=0
 for ch in word:
     Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
     x+=30
-
+"""
 #Man Graphics
 Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
 Sprite(LineAsset(0,70,LineStyle(4,Color(0xFF1493,1))),(303,120))#body
@@ -67,7 +77,7 @@ Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(274,125))#arm1
 Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(303,125))#arm2
 Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
 Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
-
+"""
 App().listenKeyEvent("keydown","a",keyPress)
 App().listenKeyEvent("keydown","b",keyPress)
 App().listenKeyEvent("keydown","c",keyPress)
@@ -97,9 +107,9 @@ App().listenKeyEvent("keydown","z",keyPress)
 
 App().run()
 
-
-#consider adding difficulty levels
 """
+#consider adding difficulty levels
+
 -------------------------------------------------------
 Useful detail - event.key contains the key that was pressed to trigger the key press function. You will need to listen for 26 different keys (use a loop to shorten this code!)
 
