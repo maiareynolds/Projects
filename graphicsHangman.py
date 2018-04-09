@@ -39,7 +39,7 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
         else:
             Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x2,0))
             x1+=30
-            x2=0
+            x2+=30
 
 if __name__=="__main__":
     #Background Graphics
