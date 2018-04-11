@@ -23,7 +23,7 @@ def wordComplete(): #returns True if all letters in word have been guessed, fals
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
     Sprite(TextAsset("True, the word is",fill=Color(0xFF1493,1),style="40pt Times bold"),(150,150)))#work on
     Sprite(TextAsset(word,fill=Color(0xFF1493,1),style="40pt Times bold",(250,200)))
-
+"""
 def printHangman(incorrect): #prints out new body part with each wrong guess
     while incorrect<=6:
         if incorrect==1:
@@ -38,7 +38,8 @@ def printHangman(incorrect): #prints out new body part with each wrong guess
             Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
         else:
             Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
-"""
+Sprite(RectangleAsset(800,800,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
+
 def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
     letter=event.key
     print(letter)
@@ -47,21 +48,6 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
     for ch in word:
         if letter==ch:
             Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
-        else:
-            incorrect+=1
-            while incorrect<=6:
-                if incorrect==1:
-                    Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
-                elif incorrect==2:
-                    Sprite(LineAsset(0,70,LineStyle(4,Color(0xFF1493,1))),(303,120))#body
-                elif incorrect==3:
-                    Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(274,125))#arm1
-                elif incorrect==4:
-                    Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(303,125))#arm2
-                elif incorrect==5:
-                    Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
-                else:
-                    Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
         x1+=30
     x1+=30
     Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
@@ -77,14 +63,17 @@ if __name__=="__main__":
     Sprite(LineAsset(0,40,LineStyle(6,Color(0x000000,1))),(300,50))#small down
     Sprite(LineAsset(150,0,LineStyle(6,Color(0x000000,1))),(125,300))#large across
     Sprite(TextAsset("Hangman",fill=Color(0x00CED1,1),style="15pt Times"),(930,500))#logo
-
-
-#Letter Line Graphics
-word="watermelon"
-x=0
-for ch in word:
-    Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
-    x+=30
+    #Letter Line Graphics
+    word="watermelon"
+    x=0
+    for ch in word:
+        Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
+        x+=30
+"""
+    if event.key not in word:
+        incorrect+=1
+        printHangman(incorrect)
+"""
 """
 #Man Graphics
 Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
