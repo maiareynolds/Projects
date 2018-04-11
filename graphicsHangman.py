@@ -43,16 +43,16 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
     letter=event.key
     print(letter)
     x1=0
+    incorrect=0
     for ch in word:
         if letter==ch:
             Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
+        else:
+            incorrect+=1
+            printHangman(incorrect)
         x1+=30
     x1+=30
     Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
-    incorrect=0
-    if letter not in word:
-        incorrect+=1
-        printHangman(incorrect)
 
 if __name__=="__main__":
     #Background Graphics
