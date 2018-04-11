@@ -38,7 +38,8 @@ def printHangman(incorrect): #prints out new body part with each wrong guess
             Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
         else:
             Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
-Sprite(RectangleAsset(800,800,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
+    Sprite(RectangleAsset(1100,600,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
+    Sprite(TextAsset("False",fill=Color(0xFF0000,1),style="60pt Times bold"),(575,300))
 
 def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
     letter=event.key
@@ -69,6 +70,9 @@ if __name__=="__main__":
     for ch in word:
         Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
         x+=30
+    Sprite(RectangleAsset(1100,600,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
+    Sprite(TextAsset("False",fill=Color(0xFF0000,1),style="60pt Times bold"),(420,200))
+    Sprite(TextAsset("Game"+"Over",fill=Color(0xFF0000,1),style="60pt Times bold"),(325,260))
 """
     if event.key not in word:
         incorrect+=1
