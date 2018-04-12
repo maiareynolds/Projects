@@ -24,17 +24,17 @@ def wordComplete(): #returns True if all letters in word have been guessed, fals
     Sprite(TextAsset("True, the word is",fill=Color(0xFF1493,1),style="40pt Times bold"),(150,150)))#work on
     Sprite(TextAsset(word,fill=Color(0xFF1493,1),style="40pt Times bold",(250,200)))
 """
-def printHangman(incorrect): #prints out new body part with each wrong guess
-    while incorrect<=6:
-        if incorrect==1:
+def printHangman(data["incorrect"]): #prints out new body part with each wrong guess
+    while data["incorrect"]<=6:
+        if data["incorrect"]==1:
             Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
-        elif incorrect==2:
+        elif data["incorrect"]==2:
             Sprite(LineAsset(0,70,LineStyle(4,Color(0xFF1493,1))),(303,120))#body
-        elif incorrect==3:
+        elif data["incorrect"]==3:
             Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(274,125))#arm1
-        elif incorrect==4:
+        elif data["incorrect"]==4:
             Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(303,125))#arm2
-        elif incorrect==5:
+        elif data["incorrect"]==5:
             Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
         else:
             Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
@@ -44,7 +44,8 @@ def printHangman(incorrect): #prints out new body part with each wrong guess
 
 def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
     letter=event.key
-    print(letter)
+    data["letter"]=letter
+    print(data["letter"])
     x1=0
     for ch in word:
         if letter==ch:
@@ -56,11 +57,14 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
 
 if __name__=="__main__":
     data={}
+    data["letter"]=0
     data["incorrect"]=0
     data["letter"]=event.key
-    if letter not in word:
-        incorrect+=1
-        printHangman(incorrect)
+    word="watermelon"
+    data["word"]=word
+    if str(data["letter"]) not in str(data["word"]):
+        data["incorrect"]+=1
+        printHangman(data["incorrect"])
     #Background Graphics
     Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0x9FB6CD,1)),Color(0x9FB6CD,1)))#sky
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x8B4726,1)),Color(0x8B4726,1)),(0,300))#ground
@@ -72,7 +76,6 @@ if __name__=="__main__":
     Sprite(LineAsset(150,0,LineStyle(6,Color(0x000000,1))),(125,300))#large across
     Sprite(TextAsset("Hangman",fill=Color(0x00CED1,1),style="15pt Times"),(930,500))#logo
     #Letter Line Graphics
-    word="watermelon"
     x=0
     for ch in word:
         Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
