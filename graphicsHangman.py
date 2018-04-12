@@ -24,7 +24,6 @@ def wordComplete(): #returns True if all letters in word have been guessed, fals
     Sprite(TextAsset("True, the word is",fill=Color(0xFF1493,1),style="40pt Times bold"),(150,150)))#work on
     Sprite(TextAsset(word,fill=Color(0xFF1493,1),style="40pt Times bold",(250,200)))
 """
-incorrect=0
 def printHangman(incorrect): #prints out new body part with each wrong guess
     while incorrect<=6:
         if incorrect==1:
@@ -47,18 +46,21 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
     letter=event.key
     print(letter)
     x1=0
-    incorrect=0
     for ch in word:
         if letter==ch:
             Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
-        else:
-            printHangman(incorrect+1)
         x1+=30
     x1+=30
     Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
 
 
 if __name__=="__main__":
+    data={}
+    data["incorrect"]=0
+    data["letter"]=event.key
+    if letter not in word:
+        incorrect+=1
+        printHangman(incorrect)
     #Background Graphics
     Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0x9FB6CD,1)),Color(0x9FB6CD,1)))#sky
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x8B4726,1)),Color(0x8B4726,1)),(0,300))#ground
