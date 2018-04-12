@@ -8,15 +8,15 @@ from random import randint
 def pickWord: #picks a "random" word from a list of words
     i=randint(1,5)
     if i==1:
-        word=""
+        word="Awkward"
     elif i==2:
-        word=""
+        word="Croquet"
     elif i==3:
-        word=""
+        word="Fjord"
     elif i==4:
-        word=""
+        word="Kiosk"
     else:
-        word=""
+        word="Quip"
 
 def wordComplete(): #returns True if all letters in word have been guessed, false otherwise
     Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0xBBFFFF,1)),Color(0xBBFFFF,1)))
@@ -51,12 +51,12 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
     for ch in word:
         if letter==ch:
             Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
+        else:
+            printHangman(incorrect+1)
         x1+=30
     x1+=30
     Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
-    if letter not in word:
-        incorrect+=1
-        printHangman(incorrect)
+
 
 if __name__=="__main__":
     #Background Graphics
@@ -76,11 +76,6 @@ if __name__=="__main__":
         Sprite(LineAsset(20,0,LineStyle(3,Color(0x000000,1))),(125+x,350))
         x+=30
 
-"""
-    if event.key not in word:
-        incorrect+=1
-        printHangman(incorrect)
-"""
 """
 #Man Graphics
 Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
