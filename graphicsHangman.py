@@ -64,7 +64,7 @@ if __name__=="__main__":
     data["word"]=word
     if str(data["letter"]) not in str(data["word"]):
         data["incorrect"]+=1
-        printHangman(data["incorrect"])
+        printHangman(int(data["incorrect"]))
     #Background Graphics
     Sprite(RectangleAsset(1200,800,LineStyle(3,Color(0x9FB6CD,1)),Color(0x9FB6CD,1)))#sky
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x8B4726,1)),Color(0x8B4726,1)),(0,300))#ground
