@@ -26,7 +26,28 @@ def wordComplete(): #returns True if all letters in word have been guessed, fals
 
     if str(data["letter"]) not in str(data["word"]):
 """
+def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
+    letter=event.key
+    data["letter"]=letter
+    print(data["letter"])#take out
+    x1=0
+    if letter not in word:
+        data["incorrect"]+=1
+        printHangman(0)
+    else:
+        for ch in word:
+            if letter==ch:
+                Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
+            x1+=30
+        x1+=30
+"""        data["correct"]+=1
+        if data["correct"]==:
+            wordComplete()
+"""    Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
+
+
 def printHangman(incorrect): #prints out new body part with each wrong guess
+    incorrect=data["score"]
     while incorrect<=6:
         if incorrect==1:
             Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
@@ -43,26 +64,6 @@ def printHangman(incorrect): #prints out new body part with each wrong guess
     Sprite(RectangleAsset(1100,600,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
     Sprite(TextAsset("False",fill=Color(0xFF0000,1),style="60pt Times bold"),(420,200))
     Sprite(TextAsset("Game"+"Over",fill=Color(0xFF0000,1),style="60pt Times bold"),(325,260))
-
-def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
-    letter=event.key
-    data["letter"]=letter
-    print(data["letter"])#take out
-    x1=0
-    if letter not in word:
-        data["incorrect"]+=1
-        printHangman(data["incorrect"])
-    else:
-        for ch in word:
-            if letter==ch:
-                Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
-            x1+=30
-        x1+=30
-        data["correct"]+=1
-        if data["correct"]==:
-            wordComplete()
-    Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
-
 
 if __name__=="__main__":
     data={}
