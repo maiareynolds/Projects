@@ -5,24 +5,8 @@
 from ggame import *
 from random import randint
 
-def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
-    data["letter"]=event.key
-    print(data["letter"])#take out
-    x1=0
-    if data["letter"] not in word:
-        printHangman(data["incorrect"])
-    else:
-        for ch in word:
-            if data["letter"]==ch:
-                Sprite(TextAsset(data["letter"],fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
-            x1+=30
-        x1+=30
-    Sprite(TextAsset(data["letter"],fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
-
 def printHangman(incorrect): #prints out new body part with each wrong guess
-    data["incorrect"]+=1
-    incorrect=data["incorrect"]
-    while incorrect<=6:
+    for incorrect<=6:
         if incorrect==1:
             Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
         elif incorrect==2:
@@ -38,6 +22,22 @@ def printHangman(incorrect): #prints out new body part with each wrong guess
     Sprite(RectangleAsset(1100,600,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
     Sprite(TextAsset("False",fill=Color(0xFF0000,1),style="60pt Times bold"),(420,200))
     Sprite(TextAsset("Game"+"Over",fill=Color(0xFF0000,1),style="60pt Times bold"),(325,260))
+
+def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
+    data["letter"]=event.key
+    print(data["letter"])#take out
+    x1=0
+    if data["letter"] not in word:
+        data["incorrect"]+=1
+        printHangman(data["incorrect"])
+    else:
+        for ch in word:
+            if data["letter"]==ch:
+                Sprite(TextAsset(data["letter"],fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
+            x1+=30
+        x1+=30
+    Sprite(TextAsset(data["letter"],fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
+
 
 if __name__=="__main__":
     data={}
