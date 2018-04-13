@@ -5,7 +5,7 @@
 from ggame import *
 from random import randint
 """
-def pickWord: #picks a "random" word from a list of words
+def pickWord(): #picks a "random" word from a list of words
     i=randint(1,5)
     if i==1:
         word="Awkward"
@@ -23,37 +23,44 @@ def wordComplete(): #returns True if all letters in word have been guessed, fals
     Sprite(RectangleAsset(1200,400,LineStyle(3,Color(0x00FF7F,1)),Color(0x00FF7F,1)),(0,300))
     Sprite(TextAsset("True, the word is",fill=Color(0xFF1493,1),style="40pt Times bold"),(150,150)))#work on
     Sprite(TextAsset(word,fill=Color(0xFF1493,1),style="40pt Times bold",(250,200)))
+
+    if str(data["letter"]) not in str(data["word"]):
 """
 def printHangman(incorrect): #prints out new body part with each wrong guess
-    if str(data["letter"]) not in str(data["word"]):
-        data["incorrect"]+=1
-        while data["incorrect"]<=6:
-            if data["incorrect"]==1:
-                Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
-            elif data["incorrect"]==2:
-                Sprite(LineAsset(0,70,LineStyle(4,Color(0xFF1493,1))),(303,120))#body
-            elif data["incorrect"]==3:
-                Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(274,125))#arm1
-            elif data["incorrect"]==4:
-                Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(303,125))#arm2
-            elif data["incorrect"]==5:
-                Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
-            else:
-                Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
-        Sprite(RectangleAsset(1100,600,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
-        Sprite(TextAsset("False",fill=Color(0xFF0000,1),style="60pt Times bold"),(420,200))
-        Sprite(TextAsset("Game"+"Over",fill=Color(0xFF0000,1),style="60pt Times bold"),(325,260))
+    while incorrect<=6:
+        if incorrect==1:
+            Sprite(CircleAsset(15,LineStyle(1,Color(0xFF1493,1)),Color(0xFF1493,1)),(292.5,95))#head
+        elif incorrect==2:
+            Sprite(LineAsset(0,70,LineStyle(4,Color(0xFF1493,1))),(303,120))#body
+        elif incorrect==3:
+            Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(274,125))#arm1
+        elif incorrect==4:
+            Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(303,125))#arm2
+        elif incorrect==5:
+            Sprite(LineAsset(-30,30,LineStyle(4,Color(0xFF1493,1))),(274,190))#leg1
+        else:
+            Sprite(LineAsset(30,30,LineStyle(4,Color(0xFF1493,1))),(303,190))#leg2
+    Sprite(RectangleAsset(1100,600,LineStyle(4,Color(0x000000,1)),Color(0x000000,1)))
+    Sprite(TextAsset("False",fill=Color(0xFF0000,1),style="60pt Times bold"),(420,200))
+    Sprite(TextAsset("Game"+"Over",fill=Color(0xFF0000,1),style="60pt Times bold"),(325,260))
 
 def keyPress(event): #puts letter in word if correct and  puts letter in list of guessed letters
     letter=event.key
     data["letter"]=letter
-    print(data["letter"])
+    print(data["letter"])#take out
     x1=0
-    for ch in word:
-        if letter==ch:
-            Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
+    if letter not in word:
+        data["incorrect"]+=1
+        printHangman(data["incorrect"])
+    else:
+        for ch in word:
+            if letter==ch:
+                Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
+            x1+=30
         x1+=30
-    x1+=30
+        data["correct"]+=1
+        if data["correct"]==:
+            wordComplete()
     Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
 
 
@@ -61,6 +68,7 @@ if __name__=="__main__":
     data={}
     data["letter"]=0
     data["incorrect"]=0
+    data["correct"]=0
     data["letter"]=0
     word="watermelon"
     data["word"]=word
