@@ -40,10 +40,12 @@ def keyPress(event): #puts letter in word if correct and  puts letter in list of
                 Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(135+x1,325))
             x1+=30
         x1+=30
-"""        data["correct"]+=1
+"""
+        data["correct"]+=1
         if data["correct"]==:
             wordComplete()
-"""    Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
+"""
+    Sprite(TextAsset(letter,fill=Color(0x000000,1),style="15pt Times"),(x1,0))#FIX
 
 
 def printHangman(incorrect): #prints out new body part with each wrong guess
