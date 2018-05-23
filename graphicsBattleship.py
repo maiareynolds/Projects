@@ -10,7 +10,7 @@ def buildBoard(): #5x5 matrix (or whatever size) and returns it
     columns=0
     for columns<400:
         while rows<400:
-            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x1874CD,1)),(rows,0))
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x1874CD,1)),(rows,columns))
             rows+=40
         columns+=40
         rows=0
