@@ -3,8 +3,10 @@
 #graphicsBattleship.py - Battleship with graphics
 
 from ggame import *
+from random import randint
 
-def buildBoard(): #10x10 matrix (or whatever size) and returns it
+#makes 2 10x10 matrices and returns them
+def buildBoard():
     rows=0
     columns=0
     while columns<400:
@@ -20,7 +22,9 @@ def buildBoard(): #10x10 matrix (or whatever size) and returns it
             rows+=40
         columns+=40
         rows=0
-    Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="Georgia 40pt bold"),(700,450))
+    Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
+    Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
+    return
 
 #Deletes all graphics on the board and draws the player board and computer board in their current state
 #allow for ships that are more than one space
