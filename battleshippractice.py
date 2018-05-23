@@ -61,6 +61,8 @@ def mouseClick(event):
 
 if __name__ == '__main__':
     buildBoard()
+    data={}
+    data["yourships"]=0
 
 App().run()
 App().listenMouseEvent("click",mouseClick)
