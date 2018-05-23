@@ -5,12 +5,19 @@
 from ggame import *
 
 def buildBoard(): #5x5 matrix (or whatever size) and returns it
-    Sprite(RectangleAsset(400,400,LineStyle(1,Color(0x1874CD,1)),Color(0x1874CD,1)))
+    Sprite(RectangleAsset(400,400,LineStyle(1,Color(0x1874CD,1)),Color(0x1874CD,1)))#need?
     rows=0
     columns=0
     while columns<400:
         while rows<400:
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x1874CD,1)),(rows,columns))
+            rows+=40
+        columns+=40
+        rows=0
+    columns=0
+    while columns<400:
+        while rows<400:
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x1874CD,1)),(600+rows,columns))
             rows+=40
         columns+=40
         rows=0
