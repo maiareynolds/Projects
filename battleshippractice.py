@@ -48,7 +48,6 @@ def computerTurn():
 
 #what row and column the user clicked (event.x and .y have the coordinates)
 #if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
-squares=0
 def mouseClick(event):
     squares+=1
     if squares<=11:
