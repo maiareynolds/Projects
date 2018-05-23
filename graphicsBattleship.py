@@ -4,7 +4,7 @@
 
 from ggame import *
 
-def buildBoard(): #5x5 matrix (or whatever size) and returns it
+def buildBoard(): #10x10 matrix (or whatever size) and returns it
     rows=0
     columns=0
     while columns<400:
@@ -20,6 +20,7 @@ def buildBoard(): #5x5 matrix (or whatever size) and returns it
             rows+=40
         columns+=40
         rows=0
+    Sprite(TextAsset("Computer's Board",fill=Color(0xFF3030,1),style="Georgia 40pt bold"),(650,450))
 
 #Deletes all graphics on the board and draws the player board and computer board in their current state
 #allow for ships that are more than one space
