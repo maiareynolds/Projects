@@ -45,7 +45,7 @@ def pickComputerShips():
     r1=randint(1,11)
     c1=randint(1,11)
     x1=(600+r1*40)
-    y1=
+    y1=(c1*40)
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
