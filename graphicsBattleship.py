@@ -36,12 +36,93 @@ def buildBoard():
 def redrawAll():
     ...
 
-#Has the computer pick three random spaces for their ships.
+#Has the computer pick 5 random spaces for their ships.
 #The computer should not be able to put two ships on top of each other
 def pickComputerShips():
+    xvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
+    yvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
     #2:
-    r1=randint(1,8)
-    c1=randint(1,8)
+    xvalues[0]=randint(0,8)
+    yvalues[0]=randint(0,8)
+    choice=0
+    if xvalues[0]==0 and yvalues[0]==0:
+        choice=randint(1,2)
+        if choice==1:
+            xvalues[1]=1
+            yvalues[1]=0
+        else:
+            xvalues[1]=0
+            yvalues[1]=1
+    elif xvalues[0]==0 and yvalues[0]!=0:
+        choice=randint(1,3)
+        if choice==1:
+            xvalues[1]=1
+            yvalues[1]=0
+        elif choice==2:
+            xvalues[1]=0
+            yvalues[1]=yvalues[0]-1
+        else:
+            xvalues[1]=0
+            yvalues[1]=yvalues[0]+1
+    elif xvalues[0]!=0 and yvalues[0]==0:
+        choice=randint(1,3)
+        if choice==1:
+            xvalues[1]=xvalues[0]-1
+            yvalues[1]=0
+        elif choice==2:
+            xvalues[1]=xvalues[0]+1
+            yvalues[1]=0
+        else:
+            xvalues[1]=xvalues[0]
+            yvalues[1]=1
+    elif xvalues[0]==8 and yvalues[0]==8:
+        choice=randint(1,2)
+        if choice==1:
+            xvalues[1]=7
+            yvalues[1]=8
+        else:
+            xvalues[1]=8
+            yvalues[1]=7
+    elif xvalues[0]==8 and yvalues[0]!=8:
+        choice=randint(1,3)
+        if choice==1:
+            xvalues[1]=7
+            yvalues[1]=yvalues[0]
+        elif choice==2:
+            xvalues[1]=8
+            yvalues[1]=yvalues[0]-1
+        else:
+            xvalues[1]=8
+            yvalues[1]=yvalues[0]+1
+    elif xvalues[0]!=8 and yvalues[0]==8:
+        choice=randint(1,3)
+        if choice==1:
+            xvalues[1]=xvalues[0]-1
+            yvalues[1]=8
+        elif choice==2:
+            xvalues[1]=xvalues[0]+1
+            yvalues[1]=8
+        else:
+            xvalues[1]=xvalues[0]
+            yvalues[1]=7
+    else:
+        choice=randint(1,4)
+        if choice==1:
+            xvalues[1]=xvalues[0]+1
+            yvalues[1]=yvalues[0]
+        elif choice==2:
+            xvalues[1]=xvalues[0]-1
+            yvalues[1]=yvalues[0]
+        elif choice==3:
+            xvalues[1]=xvalues[0]
+            yvalues[1]=yvalues[0]+1
+        else:
+            xvalues[1]=xvalues[0]
+            yvalues[1]=yvalues[0]-1
+
+
+
+    
     Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r1*40,c1*40))
     r2=randint(1,8)
     c2=randint(1,8)
@@ -57,7 +138,7 @@ def pickComputerShips():
     r4=randint(1,7)
     c4=randint(1,7)
     Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r4*40,c4*40))
-    #fix
+    #how to make sure the ships are not overlapping?
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
