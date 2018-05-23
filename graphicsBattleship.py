@@ -42,7 +42,10 @@ def redrawAll():
 #The computer should not be able to put two ships on top of each other
 def pickComputerShips():
     #1:
-    
+    r1=randint(1,11)
+    c1=randint(1,11)
+    x1=(600+r1*40)
+    y1=
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
