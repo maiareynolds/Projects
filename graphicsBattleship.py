@@ -5,7 +5,11 @@
 from ggame import *
 
 def buildBoard(): #5x5 matrix (or whatever size) and returns it
-    ...
+    Sprite(RectangleAsset(400,400,LineStyle(1,Color(0x1874CD,1)),Color(0x1874CD,1)))
+    rows=0
+    while rows<400:
+        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x1874CD,1)),(rows,columns))
+        rows+=40
 
 #Deletes all graphics on the board and draws the player board and computer board in their current state
 #allow for ships that are more than one space
@@ -28,8 +32,7 @@ def mouseClick(event):
     ...
 
 if __name__ == '__main__':
-    Sprite(RectangleAsset(400,400,LineStyle(1,Color(0x1874CD,1)),Color(0x1874CD,1)))
-    Sprite(RectangleAsset(40,40,LineStyle(1,Color(0x000000,1)),Color(0x1874CD,1)))
+    buildBoard()
 
 #second color:104E8B
 
