@@ -46,6 +46,9 @@ def pickComputerShips():
     r2=randint(1,8)
     c2=randint(1,8)
     Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r2*40,c2*40))
+    r5=randint(1,8)
+    c5=randint(1,8)
+    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r5*40,c5*40))
     #3
     r3=randint(1,7)
     c3=randint(1,7)
