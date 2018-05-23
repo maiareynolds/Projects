@@ -25,9 +25,9 @@ def buildBoard():
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
     Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
-    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x1874CD,1)),Color(0xFF3E96,1)),(450,50))
+    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(450,50))
     Sprite(TextAsset("x3",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,50))
-    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x1874CD,1)),Color(0xFF3E96,1)),(410,100))
+    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(410,100))
     Sprite(TextAsset("x2",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,100))
     return
 
@@ -39,11 +39,18 @@ def redrawAll():
 #Has the computer pick three random spaces for their ships.
 #The computer should not be able to put two ships on top of each other
 def pickComputerShips():
-    #1:
-    r1=randint(1,11)
-    c1=randint(1,11)
-    x1=(600+r1*40)
-    y1=(c1*40)
+    #2:
+    r1=randint(1,8)
+    c1=randint(1,8)
+    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r1*40,c1*40))
+    r2=randint(1,8)
+    c2=randint(1,8)
+    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r2*40,c2*40))
+    #3
+    r3=randint(1,7)
+    c3=randint(1,7)
+    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r3*40,c3*40))
+    #fix
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
@@ -57,6 +64,7 @@ def mouseClick(event):
 
 if __name__ == '__main__':
     buildBoard()
+    pickComputerShips()
 
 #second color:104E8B
 
