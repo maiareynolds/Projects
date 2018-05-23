@@ -42,83 +42,85 @@ def pickComputerShips():
     xvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
     yvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
     #2:
-    xvalues[0]=randint(0,8)
-    yvalues[0]=randint(0,8)
-    choice=0
-    if xvalues[0]==0 and yvalues[0]==0:
-        choice=randint(1,2)
-        if choice==1:
-            xvalues[1]=1
-            yvalues[1]=0
+    num=0
+    for num<=5:
+        xvalues[num]=randint(0,8)
+        yvalues[num]=randint(0,8)
+        choice=0
+        if xvalues[num]==0 and yvalues[num]==0:
+            choice=randint(1,2)#######
+            if choice==1:
+                xvalues[num+1]=1
+                yvalues[num+1]=0
         else:
-            xvalues[1]=0
-            yvalues[1]=1
-    elif xvalues[0]==0 and yvalues[0]!=0:
-        choice=randint(1,3)
-        if choice==1:
-            xvalues[1]=1
-            yvalues[1]=0
-        elif choice==2:
-            xvalues[1]=0
-            yvalues[1]=yvalues[0]-1
+            xvalues[num+1]=0
+            yvalues[num+1]=1
+        elif xvalues[num]==0 and yvalues[num]!=0:
+            choice=randint(1,3)
+            if choice==1:
+                xvalues[num+1]=1
+                yvalues[num+1]=0
+            elif choice==2:
+                xvalues[num+1]=0
+                yvalues[num+1]=yvalues[num]-1
+            else:
+                xvalues[num+1]=0
+                yvalues[num+1]=yvalues[num]+1
+        elif xvalues[num]!=0 and yvalues[num]==0:
+            choice=randint(1,3)
+            if choice==1:
+                xvalues[num+1]=xvalues[num]-1
+                yvalues[num+1]=0
+            elif choice==2:
+                xvalues[num+1]=xvalues[num]+1
+                yvalues[num+1]=0
+            else:
+                xvalues[num+1]=xvalues[num]
+                yvalues[num+1]=1
+        elif xvalues[num]==8 and yvalues[num]==8:
+            choice=randint(1,2)
+            if choice==1:
+                xvalues[num+1]=7
+                yvalues[num+1]=8
+            else:
+                xvalues[num+1]=8
+                yvalues[num+1]=7
+        elif xvalues[num]==8 and yvalues[num]!=8:
+            choice=randint(1,3)
+            if choice==1:
+                xvalues[num+1]=7
+                yvalues[num+1]=yvalues[num]
+            elif choice==2:
+                xvalues[num+1]=8
+                yvalues[num+1]=yvalues[num]-1
+            else:
+                xvalues[num+1]=8
+                yvalues[num+1]=yvalues[num]+1
+        elif xvalues[num]!=8 and yvalues[num]==8:
+            choice=randint(1,3)
+            if choice==1:
+                xvalues[num+1]=xvalues[num]-1
+                yvalues[num+1]=8
+            elif choice==2:
+                xvalues[num+1]=xvalues[num]+1
+                yvalues[num+1]=8
+            else:
+                xvalues[num+1]=xvalues[num]
+                yvalues[num+1]=7
         else:
-            xvalues[1]=0
-            yvalues[1]=yvalues[0]+1
-    elif xvalues[0]!=0 and yvalues[0]==0:
-        choice=randint(1,3)
-        if choice==1:
-            xvalues[1]=xvalues[0]-1
-            yvalues[1]=0
-        elif choice==2:
-            xvalues[1]=xvalues[0]+1
-            yvalues[1]=0
-        else:
-            xvalues[1]=xvalues[0]
-            yvalues[1]=1
-    elif xvalues[0]==8 and yvalues[0]==8:
-        choice=randint(1,2)
-        if choice==1:
-            xvalues[1]=7
-            yvalues[1]=8
-        else:
-            xvalues[1]=8
-            yvalues[1]=7
-    elif xvalues[0]==8 and yvalues[0]!=8:
-        choice=randint(1,3)
-        if choice==1:
-            xvalues[1]=7
-            yvalues[1]=yvalues[0]
-        elif choice==2:
-            xvalues[1]=8
-            yvalues[1]=yvalues[0]-1
-        else:
-            xvalues[1]=8
-            yvalues[1]=yvalues[0]+1
-    elif xvalues[0]!=8 and yvalues[0]==8:
-        choice=randint(1,3)
-        if choice==1:
-            xvalues[1]=xvalues[0]-1
-            yvalues[1]=8
-        elif choice==2:
-            xvalues[1]=xvalues[0]+1
-            yvalues[1]=8
-        else:
-            xvalues[1]=xvalues[0]
-            yvalues[1]=7
-    else:
-        choice=randint(1,4)
-        if choice==1:
-            xvalues[1]=xvalues[0]+1
-            yvalues[1]=yvalues[0]
-        elif choice==2:
-            xvalues[1]=xvalues[0]-1
-            yvalues[1]=yvalues[0]
-        elif choice==3:
-            xvalues[1]=xvalues[0]
-            yvalues[1]=yvalues[0]+1
-        else:
-            xvalues[1]=xvalues[0]
-            yvalues[1]=yvalues[0]-1
+            choice=randint(1,4)
+            if choice==1:
+                xvalues[num+1]=xvalues[num]+1
+                yvalues[num+1]=yvalues[num]
+            elif choice==2:
+                xvalues[num+1]=xvalues[num]-1
+                yvalues[num+1]=yvalues[num]
+            elif choice==3:
+                xvalues[num+1]=xvalues[num]
+                yvalues[num+1]=yvalues[num]+1
+            else:
+                xvalues[num+1]=xvalues[num]
+                yvalues[num+1]=yvalues[num]-1
 
 
 
