@@ -54,7 +54,7 @@ def mouseClick(event):
         y=(event.y-event.y%40)
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
     if event.x>600 and event.y<400:
-        if (event.x-event.x%40) in xvalues and (event.y-event.y%40) in yvalues:
+        if (event.x-event.x%40) in data["xvalues"] and (event.y-event.y%40) in data["yvalues"]:
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
         else:
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
@@ -62,7 +62,8 @@ def mouseClick(event):
 if __name__ == '__main__':
     buildBoard()
     data={}
-    data["yourships"]=0
+    data["xvalues"]=[]
+    data["yvalues"]=[]
 
 App().run()
 App().listenMouseEvent("click",mouseClick)
