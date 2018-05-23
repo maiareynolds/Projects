@@ -24,6 +24,13 @@ def buildBoard():
         rows=0
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
+    Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
+    Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x1874CD,1)),Color(0xFF3E96,1)),(490,50))
+    Sprite(TextAsset("x3",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,50))
+    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x1874CD,1)),Color(0xFF3E96,1)),(450,100))
+    Sprite(TextAsset("x3",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,100))
+    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x1874CD,1)),Color(0xFF3E96,1)),(410,150))
+    Sprite(TextAsset("x2",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,150))
     return
 
 #Deletes all graphics on the board and draws the player board and computer board in their current state
