@@ -49,12 +49,15 @@ def computerTurn():
 #what row and column the user clicked (event.x and .y have the coordinates)
 #if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
 def mouseClick(event):
-    squares+=1
-    if squares<=11:
-        if event.x<400 and event.y<400:
-            x=(event.x-event.x%40)
-            y=(event.y-event.y%40)
-            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
+    if event.x<400 and event.y<400:
+        x=(event.x-event.x%40)
+        y=(event.y-event.y%40)
+        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
+    if event.x>600 and event.y<400:
+        x=(event.x-event.x%40)
+        y=(event.y-event.y%40)
+        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
+
 
 if __name__ == '__main__':
     buildBoard()
