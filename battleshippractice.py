@@ -51,7 +51,7 @@ def computerTurn():
 squares=0
 def mouseClick(event):
     squares+=1
-    for squares<=11
+    if squares<=11:
         if event.x<400 and event.y<400:
             x=(event.x-event.x%40)
             y=(event.y-event.y%40)
