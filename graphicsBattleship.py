@@ -41,7 +41,8 @@ def redrawAll():
 #Has the computer pick three random spaces for their ships.
 #The computer should not be able to put two ships on top of each other
 def pickComputerShips():
-    ...
+    #1:
+    
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
