@@ -20,7 +20,7 @@ def buildBoard(): #10x10 matrix (or whatever size) and returns it
             rows+=40
         columns+=40
         rows=0
-    Sprite(TextAsset("Computer's Board",fill=Color(0xFF3030,1),style="Georgia 40pt bold"),(650,450))
+    Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="Georgia 40pt bold"),(700,450))
 
 #Deletes all graphics on the board and draws the player board and computer board in their current state
 #allow for ships that are more than one space
