@@ -121,6 +121,9 @@ def pickComputerShips():
             else:
                 xvalues[num+1]=xvalues[num]
                 yvalues[num+1]=yvalues[num]-1
+        num+=2
+    for num<=6 and num<=12:
+        ...###
 
 
 
