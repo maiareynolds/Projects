@@ -41,6 +41,8 @@ def redrawAll():
 def pickComputerShips():
     xvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
     yvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
+    #try 0,7 so can add to sides... etc. only need 2
+"""
     #2:
     num=0
     for num<=5:
@@ -141,7 +143,7 @@ def pickComputerShips():
     for item in xvalues:
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+item*40,y*40))
         y+=1
-
+"""
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
