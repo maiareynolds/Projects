@@ -48,13 +48,13 @@ def pickComputerShips():
         yvalues[num]=randint(0,8)
         choice=0
         if xvalues[num]==0 and yvalues[num]==0:
-            choice=randint(1,2)#######
+            choice=randint(1,2)
             if choice==1:
                 xvalues[num+1]=1
                 yvalues[num+1]=0
-        else:
-            xvalues[num+1]=0
-            yvalues[num+1]=1
+            else:
+                xvalues[num+1]=0
+                yvalues[num+1]=1
         elif xvalues[num]==0 and yvalues[num]!=0:
             choice=randint(1,3)
             if choice==1:
@@ -123,27 +123,25 @@ def pickComputerShips():
                 yvalues[num+1]=yvalues[num]-1
         num+=2
     for num<=6 and num<=12:
-        ...###
+        xvalues[num]=randint(1,7)
+        yvalues[num]=randint(1,7)
+        choice=randint(1,2)
+        if choice==1:
+            xvalues[num+1]=xvalues[num]+1
+            xvalues[num+2]=xvalues[num]-1
+            yvalues[num+1]=yvalues[num]
+            yvalues[num+2]=yvalues[num]
+        else:
+            xvalues[num+1]=xvalues[num]
+            xvalues[num+2]=xvalues[num]
+            yvalues[num+1]=yvalues[num]+1
+            yvalues[num+2]=yvalues[num]-1
+        num+=3
+    y=0
+    for item in xvalues:
+        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+item*40,y*40))
+        y+=1
 
-
-
-    
-    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r1*40,c1*40))
-    r2=randint(1,8)
-    c2=randint(1,8)
-    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r2*40,c2*40))
-    r5=randint(1,8)
-    c5=randint(1,8)
-    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r5*40,c5*40))
-    #3
-    r3=randint(1,7)
-    c3=randint(1,7)
-    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r3*40,c3*40))
-    #4
-    r4=randint(1,7)
-    c4=randint(1,7)
-    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r4*40,c4*40))
-    #how to make sure the ships are not overlapping?
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
