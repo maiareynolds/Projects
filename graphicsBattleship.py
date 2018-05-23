@@ -7,9 +7,12 @@ from ggame import *
 def buildBoard(): #5x5 matrix (or whatever size) and returns it
     Sprite(RectangleAsset(400,400,LineStyle(1,Color(0x1874CD,1)),Color(0x1874CD,1)))
     rows=0
-    while rows<400:
-        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x1874CD,1)),(rows,0))
-        rows+=40
+    columns=0
+    while columns<400:
+        while rows<400:
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x1874CD,1)),(rows,0))
+            rows+=40
+        columns+=40
 
 #Deletes all graphics on the board and draws the player board and computer board in their current state
 #allow for ships that are more than one space
