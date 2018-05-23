@@ -50,6 +50,10 @@ def pickComputerShips():
     r3=randint(1,7)
     c3=randint(1,7)
     Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r3*40,c3*40))
+    #4
+    r4=randint(1,7)
+    c4=randint(1,7)
+    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+r4*40,c4*40))
     #fix
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
