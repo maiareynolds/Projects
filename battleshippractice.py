@@ -84,7 +84,6 @@ def mouseClick(event):
             data["x2"]=(event.x-event.x%40)
             data["y2"]=(event.y-event.y%40)
             if data["x2"]==data["x1"]-80:
-                yourShips=[]
                 yourShips.append((data["x1"]-40))
                 yourShips.append(data["y1"])
                 yourShips.append(data["x2"])
