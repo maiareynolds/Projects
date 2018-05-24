@@ -30,14 +30,14 @@ def redrawAll():
 
 #Has the computer pick 5 random spaces for their ships.
 #The computer should not be able to put two ships on top of each other
-def pickComputerShips():
+"""def pickComputerShips():
     x=randint(0,8)
     y=randint(0,8)
     if data["computerY"][data["computerX"].index(x)]
     
     data["computerX"].append(600+x*40)
     data["computerY"].append(y*40)
-
+"""
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
 def computerTurn():
@@ -50,11 +50,14 @@ def mouseClick(event):
         x=(event.x-event.x%40)
         y=(event.y-event.y%40)
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
-    if event.x>600 and event.y<400:
-        if data["computerX"].index((event.x-event.x%40))==data["computerY"].index((event.y-event.y%40)):
+    elif event.x>600 and event.y<400:
+        x=(event.x-event.x%40)
+        y=(event.y-event.y%40)
+        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
+"""        if data["computerX"].index((event.x-event.x%40))==data["computerY"].index((event.y-event.y%40)):
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
         else:
-            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))"""
 
 if __name__ == '__main__':
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
