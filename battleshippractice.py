@@ -42,6 +42,9 @@ def pickComputerShips():
     for i<=2:
         x=randint(0,9)
         y=randint(0,9)
+        for x*40 in compShipsx:
+            if y*40==compShipsy[compShipsy.index(x*40)]:
+                pickComputerShips()
         compShipsx.append(x*40)
         compShipsy.append(y*40)
         if x==9 and y==9:
@@ -163,26 +166,8 @@ def pickComputerShips():
                 compShipsx.append((x+1)*40)
                 compShipsy.append(y*40)
         i+=1
-    for x*40 in yourShips:
-        ####################################
-        if y*40==yourShips[yourShips.index(x*40)+1]:
-            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*40,y*40))
-            data["compHits"]+=1
-            point=True
-    if point==False:
-        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(x*40,y*40))
-    if data["compHits"]==12:
-        Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
-        Sprite(TextAsset("You Lose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250)
-    comp["xmoves"]=xmoves
-    comp["ymoves"]=ymoves
-
-        choice=randint(
-        compShipsx.append(x)
-        compShipsy.append(y)
-        compShipsx.append(x
-        i+=1
-    comp["compShipsx"]=compShips
+    comp["compShipsx"]=compShipsx
+    comp["compShipsy"]=compShipsy
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
