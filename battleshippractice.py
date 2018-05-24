@@ -194,7 +194,7 @@ def computerTurn():
         Sprite(TextAsset("You Lose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250)
     comp["xmoves"]=xmoves
     comp["ymoves"]=ymoves
-"""
+
 #what row and column the user clicked (event.x and .y have the coordinates)
 #if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
 def mouseClick(event):
@@ -204,8 +204,8 @@ def mouseClick(event):
         if data["click"]==1 or data["click"]==3 or data["click"]==5:
             data["x1"]=(event.x-event.x%40)
             data["y1"]=(event.y-event.y%40)
-            data["yourShips"].append(data["x1"])
-            data["yourShips"].append(data["y1"])
+            yourShips.append(data["x1"])
+            yourShips.append(data["y1"])
             data["option1"]=Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"]-40,data["y1"]))
             data["option2"]=Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"],data["y1"]-40))
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
@@ -280,7 +280,7 @@ def mouseClick(event):
             computerTurn()
     if data["Hits"]==12:
         print("you win")#fix
-"""
+
 #other color: 00F5FF
 
 if __name__ == '__main__':
