@@ -48,8 +48,8 @@ def mouseClick(event):
         if data["click"]==1 or data["click"]==3 or data["click"]==5:
             data["x1"]=(event.x-event.x%40)
             data["y1"]=(event.y-event.y%40)
-            data["yourships"].append(data["x1"])
-            data["yourships"].append(data["y1"])
+            yourShips.append(data["x1"])
+            yourShips.append(data["y1"])
             data["option1"]=Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"]-40,data["y1"]))
             data["option2"]=Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"],data["y1"]-40))
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
@@ -58,8 +58,8 @@ def mouseClick(event):
             data["option2"].destroy()
             data["x2"]=(event.x-event.x%40)
             data["y2"]=(event.y-event.y%40)
-            data["yourships"].append(data["x2"])
-            data["yourships"].append(data["y2"])
+            yourShips.append(data["x2"])
+            yourShips.append(data["y2"])
             if data["x2"]==data["x1"]-40:
                 Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
             elif data["x2"]==data["x1"]+40:
@@ -73,8 +73,8 @@ def mouseClick(event):
         elif data["click"]==7 or data["click"]==9:
             data["x1"]=(event.x-event.x%40)
             data["y1"]=(event.y-event.y%40)
-            data["yourships"].append(data["x1"])
-            data["yourships"].append(data["y1"])
+            yourShips.append(data["x1"])
+            yourShips.append(data["y1"])
             data["option1"]=Sprite(RectangleAsset(200,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"]-80,data["y1"]))
             data["option2"]=Sprite(RectangleAsset(40,200,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"],data["y1"]-80))
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
@@ -84,29 +84,29 @@ def mouseClick(event):
             data["x2"]=(event.x-event.x%40)
             data["y2"]=(event.y-event.y%40)
             if data["x2"]==data["x1"]-80:
-                data["yourships"][]
-                data["yourships"].append((data["x1"]-40))
-                data["yourships"].append(data["y1"])
-                data["yourships"].append(data["x2"])
-                data["yourships"].append(data["y2"])
+                yourShips=[]
+                yourShips.append((data["x1"]-40))
+                yourShips.append(data["y1"])
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
                 Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
             elif data["x2"]==data["x1"]+80:
-                data["yourships"].append((data["x1"]+40))
-                data["yourships"].append(data["y1"])
-                data["yourships"].append(data["x2"])
-                data["yourships"].append(data["y2"])
+                yourShips.append((data["x1"]+40))
+                yourShips.append(data["y1"])
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
                 Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
             elif data["y2"]==data["y1"]-80:
-                data["yourships"].append((data["x1"]))
-                data["yourships"].append((data["y1"]-40))
-                data["yourships"].append(data["x2"])
-                data["yourships"].append(data["y2"])
+                yourShips.append((data["x1"]))
+                yourShips.append((data["y1"]-40))
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
                 Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
             elif data["y2"]==data["y1"]+80:
-                data["yourships"].append((data["x1"]))
-                data["yourships"].append((data["y1"]+40))
-                data["yourships"].append(data["x2"])
-                data["yourships"].append(data["y2"])
+                yourShips.append((data["x1"]))
+                yourShips.append((data["y1"]+40))
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
                 Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
             else:
                 data["click"]-=1
@@ -116,7 +116,7 @@ def mouseClick(event):
             y=(event.y-event.y%40)
             i=0
             for i<=24:
-                if data["compships"][i]==x and data["compships"][i+1]==y:
+                if compShips[i]==x and compShips[i+1]==y:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
                     data["youwin"]+=1
                 else:
@@ -139,8 +139,8 @@ if __name__ == '__main__':
     data["y3"]=0
     data["option1"]=0
     data["option2"]=0
-    data["yourships"]=[]
-    data["compships"]=[]
+    yourShips=[]
+    compShips=[]
     data["youwin"]=0
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
