@@ -34,6 +34,7 @@ def pickComputerShips():
     computerx=[]
     computery=[]
     computerx.append(randint(0,8))
+    return compShips
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
@@ -109,6 +110,7 @@ def mouseClick(event):
                 Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
             else:
                 data["click"]-=1
+    pickComputerShips()
     elif event.x>600 and event.y<400:
         if data["click"]<=11:
             x=(event.x-event.x%40)
@@ -138,8 +140,8 @@ if __name__ == '__main__':
     data["y3"]=0
     data["option1"]=0
     data["option2"]=0
-    yourShips=[]
-    compShips=[]
+    yourShips={}
+    compShips={}
     data["youwin"]=0
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
