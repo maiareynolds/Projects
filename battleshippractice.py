@@ -38,7 +38,7 @@ def pickComputerShips():
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
 def computerTurn():
-    ...
+    print("hi")
 
 #what row and column the user clicked (event.x and .y have the coordinates)
 #if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
@@ -85,9 +85,12 @@ def mouseClick(event):
             data["y2"]=(event.y-event.y%40)
             data["yourships"].append(0)#fix
             data["yourships"].append(0)#fix
+            data["yourships"].append(0)
+            data["yourships"].append(0)
             data["yourships"].append(data["x2"])
             data["yourships"].append(data["y2"])
             if data["x2"]==data["x1"]-80:
+                data["yourships"][]
                 Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
             elif data["x2"]==data["x1"]+80:
                 Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
@@ -98,6 +101,7 @@ def mouseClick(event):
             else:
                 data["click"]-=1
     elif event.x>600 and event.y<400:
+        ...
         x=(event.x-event.x%40)
         y=(event.y-event.y%40)
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
@@ -111,11 +115,11 @@ if __name__ == '__main__':
     data["y1"]=0
     data["x2"]=0
     data["y2"]=0
+    data["x3"]=0
+    data["y3"]=0
     data["option1"]=0
     data["option2"]=0
     data["yourships"]=[]
-    print("To place your ships, click the box you want the ship to start in and the box you want it to end in")
-    print("start with the two space ships and move to the three space ships")
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
     Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
