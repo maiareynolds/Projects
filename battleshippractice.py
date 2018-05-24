@@ -83,8 +83,6 @@ def mouseClick(event):
             data["option2"].destroy()
             data["x2"]=(event.x-event.x%40)
             data["y2"]=(event.y-event.y%40)
-            data["yourships"].append(0)#fix
-            data["yourships"].append(0)#fix
             data["yourships"].append(0)
             data["yourships"].append(0)
             data["yourships"].append(data["x2"])
