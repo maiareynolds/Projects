@@ -191,7 +191,7 @@ def computerTurn():
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(x*40,y*40))
     if data["compHits"]==12:
         Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
-        Sprite(TextAsset("You Lose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250)
+        Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))
     comp["xmoves"]=xmoves
     comp["ymoves"]=ymoves
 
