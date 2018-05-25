@@ -2,11 +2,15 @@
 #5/22/18
 #graphicsBattleship.py - Battleship with graphics
 
+#Questions:
+#How to make universal lists?
+
+
+
 from ggame import *
 from random import randint
 
-#makes 2 10x10 matrices and returns them
-def buildBoard():
+def buildBoard():#makes 2 10x10 matrices and returns them
     rows=0
     columns=0
     while columns<400:
@@ -22,13 +26,6 @@ def buildBoard():
             rows+=40
         columns+=40
         rows=0
-    Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
-    Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
-    Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
-    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(450,50))
-    Sprite(TextAsset("x3",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,50))
-    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(410,100))
-    Sprite(TextAsset("x2",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,100))
     return
 
 #Deletes all graphics on the board and draws the player board and computer board in their current state
@@ -39,129 +36,287 @@ def redrawAll():
 #Has the computer pick 5 random spaces for their ships.
 #The computer should not be able to put two ships on top of each other
 def pickComputerShips():
-    xvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
-    yvalues=[1,2,3,4,5,6,7,8,9,10,11,12]
-    #try 0,7 so can add to sides... etc. only need 2
-"""
-    #2:
-    num=0
-    for num<=5:
-        xvalues[num]=randint(0,8)
-        yvalues[num]=randint(0,8)
-        choice=0
-        if xvalues[num]==0 and yvalues[num]==0:
+    compShipsx=[]
+    compShipsy=[]
+    i=0
+    for i<=2:
+        x=randint(0,9)
+        y=randint(0,9)
+        for x*40 in compShipsx:
+            if y*40==compShipsy[compShipsx.index(x*40)]:
+                pickComputerShips()
+        compShipsx.append(x*40)
+        compShipsy.append(y*40)
+        if x==9 and y==9:
             choice=randint(1,2)
             if choice==1:
-                xvalues[num+1]=1
-                yvalues[num+1]=0
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
             else:
-                xvalues[num+1]=0
-                yvalues[num+1]=1
-        elif xvalues[num]==0 and yvalues[num]!=0:
-            choice=randint(1,3)
-            if choice==1:
-                xvalues[num+1]=1
-                yvalues[num+1]=0
-            elif choice==2:
-                xvalues[num+1]=0
-                yvalues[num+1]=yvalues[num]-1
-            else:
-                xvalues[num+1]=0
-                yvalues[num+1]=yvalues[num]+1
-        elif xvalues[num]!=0 and yvalues[num]==0:
-            choice=randint(1,3)
-            if choice==1:
-                xvalues[num+1]=xvalues[num]-1
-                yvalues[num+1]=0
-            elif choice==2:
-                xvalues[num+1]=xvalues[num]+1
-                yvalues[num+1]=0
-            else:
-                xvalues[num+1]=xvalues[num]
-                yvalues[num+1]=1
-        elif xvalues[num]==8 and yvalues[num]==8:
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
+        elif x==0 and y==0:
             choice=randint(1,2)
             if choice==1:
-                xvalues[num+1]=7
-                yvalues[num+1]=8
+                compShipsx.append((x+1)*40)
+                compShipsy.append(y*40)
             else:
-                xvalues[num+1]=8
-                yvalues[num+1]=7
-        elif xvalues[num]==8 and yvalues[num]!=8:
+                compShipsx.append(x*40)
+                compShipsy.append((y+1)*40)
+        elif x==9:
             choice=randint(1,3)
             if choice==1:
-                xvalues[num+1]=7
-                yvalues[num+1]=yvalues[num]
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
             elif choice==2:
-                xvalues[num+1]=8
-                yvalues[num+1]=yvalues[num]-1
+                compShipsx.append(x*40)
+                compShipsy.append((y+1)*40)
             else:
-                xvalues[num+1]=8
-                yvalues[num+1]=yvalues[num]+1
-        elif xvalues[num]!=8 and yvalues[num]==8:
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
+        elif y==9:
             choice=randint(1,3)
             if choice==1:
-                xvalues[num+1]=xvalues[num]-1
-                yvalues[num+1]=8
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
             elif choice==2:
-                xvalues[num+1]=xvalues[num]+1
-                yvalues[num+1]=8
+                compShipsx.append((x+1)*40)
+                compShipsy.append(y*40)
             else:
-                xvalues[num+1]=xvalues[num]
-                yvalues[num+1]=7
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
         else:
             choice=randint(1,4)
             if choice==1:
-                xvalues[num+1]=xvalues[num]+1
-                yvalues[num+1]=yvalues[num]
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
             elif choice==2:
-                xvalues[num+1]=xvalues[num]-1
-                yvalues[num+1]=yvalues[num]
+                compShipsx.append(x*40)
+                compShipsy.append((y+1)*40)
             elif choice==3:
-                xvalues[num+1]=xvalues[num]
-                yvalues[num+1]=yvalues[num]+1
+                compShipsx.append((x+1)*40)
+                compShipsy.append(y*40)
             else:
-                xvalues[num+1]=xvalues[num]
-                yvalues[num+1]=yvalues[num]-1
-        num+=2
-    for num<=6 and num<=12:
-        xvalues[num]=randint(1,7)
-        yvalues[num]=randint(1,7)
-        choice=randint(1,2)
-        if choice==1:
-            xvalues[num+1]=xvalues[num]+1
-            xvalues[num+2]=xvalues[num]-1
-            yvalues[num+1]=yvalues[num]
-            yvalues[num+2]=yvalues[num]
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
+        i+=1
+    for i>2 and i<=4:
+        x=randint(0,9)
+        y=randint(0,9)
+        compShipsx.append(x*40)
+        compShipsy.append(y*40)
+        if x==9 and y==9:
+            choice=randint(1,2)
+            if choice==1:
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
+                compShipsx.append((x-2)*40)
+                compShipsy.append(y*40)
+            else:
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
+                compShipsx.append(x*40)
+                compShipsy.append((y-2)*40)
+        elif x==0 and y==0:
+            choice=randint(1,2)
+            if choice==1:
+                compShipsx.append((x+1)*40)
+                compShipsy.append(y*40)
+                compShipsx.append((x+2)*40)
+                compShipsy.append(y*40)
+            else:
+                compShipsx.append(x*40)
+                compShipsy.append((y+1)*40)
+                compShipsx.append(x*40)
+                compShipsy.append((y+2)*40)
+        elif x==9:
+            choice=randint(1,2)
+            if choice==1:
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
+                compShipsx.append(x*40)
+                compShipsy.append((y+1)*40)
+            else:
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
+                compShipsx.append((x-2)*40)
+                compShipsy.append(y*40)
+        elif y==9:
+            choice=randint(1,2)
+            if choice==1:
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
+                compShipsx.append((x+1)*40)
+                compShipsy.append(y*40)
+            else:
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
+                compShipsx.append(x*40)
+                compShipsy.append((y-2)*40)
         else:
-            xvalues[num+1]=xvalues[num]
-            xvalues[num+2]=xvalues[num]
-            yvalues[num+1]=yvalues[num]+1
-            yvalues[num+2]=yvalues[num]-1
-        num+=3
-    y=0
-    for item in xvalues:
-        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(600+item*40,y*40))
-        y+=1
-"""
+            choice=randint(1,2)
+            if choice==1:
+                compShipsx.append(x*40)
+                compShipsy.append((y-1)*40)
+                compShipsx.append(x*40)
+                compShipsy.append((y+1)*40)
+            else:
+                compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
+                compShipsx.append((x+1)*40)
+                compShipsy.append(y*40)
+        i+=1
+    comp["compShipsx"]=compShipsx
+    comp["compShipsy"]=compShipsy
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
 def computerTurn():
-    ...
+    ymoves=[]
+    xmoves=[]
+    x=randint(0,9)
+    y=randint(0,9)
+    for x*40 in xmoves:
+        if y*40==ymoves[xmoves.index(x*40)]:
+            computerTurn()
+    ymoves.append(y*40)
+    xmoves.append(x*40)
+    point=False
+    for x*40 in yourShips:
+        if y*40==yourShips[yourShips.index(x*40)+1]:
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*40,y*40))
+            data["compHits"]+=1
+            point=True
+    if point==False:
+        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(x*40,y*40))
+    if data["compHits"]==12:
+        Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
+        Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))
+    comp["xmoves"]=xmoves
+    comp["ymoves"]=ymoves
 
-#what row and column the used clicked (event.x and .y have the coordinates)
-#if player hasnt placed ships, place ship, if user has placed ship, process user's guess if valid and detect if player won
+#what row and column the user clicked (event.x and .y have the coordinates)
+#if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
 def mouseClick(event):
-    ...
+    data["click"]+=1
+    yourShips=[]
+    if event.x<400 and event.y<400:
+        if data["click"]==1 or data["click"]==3 or data["click"]==5:
+            data["x1"]=(event.x-event.x%40)
+            data["y1"]=(event.y-event.y%40)
+            yourShips.append(data["x1"])
+            yourShips.append(data["y1"])
+            data["option1"]=Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"]-40,data["y1"]))
+            data["option2"]=Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"],data["y1"]-40))
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
+        elif data["click"]==2 or data["click"]==4 or data["click"]==6:
+            data["option1"].destroy()
+            data["option2"].destroy()
+            data["x2"]=(event.x-event.x%40)
+            data["y2"]=(event.y-event.y%40)
+            yourShips.append(data["x2"])
+            yourShips.append(data["y2"])
+            if data["x2"]==data["x1"]-40:
+                Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
+            elif data["x2"]==data["x1"]+40:
+                Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
+            elif data["y2"]==data["y1"]-40:
+                Sprite(RectangleAsset(40,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
+            elif data["y2"]==data["y1"]+40:
+                Sprite(RectangleAsset(40,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
+            else:
+                data["click"]-=1
+        elif data["click"]==7 or data["click"]==9:
+            data["x1"]=(event.x-event.x%40)
+            data["y1"]=(event.y-event.y%40)
+            yourShips.append(data["x1"])
+            yourShips.append(data["y1"])
+            data["option1"]=Sprite(RectangleAsset(200,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"]-80,data["y1"]))
+            data["option2"]=Sprite(RectangleAsset(40,200,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"],data["y1"]-80))
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
+        elif data["click"]==8 or data["click"]==10:
+            data["option1"].destroy()
+            data["option2"].destroy()
+            data["x2"]=(event.x-event.x%40)
+            data["y2"]=(event.y-event.y%40)
+            if data["x2"]==data["x1"]-80:
+                yourShips.append((data["x1"]-40))
+                yourShips.append(data["y1"])
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
+                Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
+            elif data["x2"]==data["x1"]+80:
+                yourShips.append((data["x1"]+40))
+                yourShips.append(data["y1"])
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
+                Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
+            elif data["y2"]==data["y1"]-80:
+                yourShips.append((data["x1"]))
+                yourShips.append((data["y1"]-40))
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
+                Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
+            elif data["y2"]==data["y1"]+80:
+                yourShips.append((data["x1"]))
+                yourShips.append((data["y1"]+40))
+                yourShips.append(data["x2"])
+                yourShips.append(data["y2"])
+                Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
+            else:
+                data["click"]-=1
+    elif event.x>600 and event.y<400:
+        if data["click"]<=11:
+            x=(event.x-event.x%40)
+            y=(event.y-event.y%40)
+            i=0
+            for i<=24:
+                if comp["compShipsx"][i]==x and comp["compShipsy"][i]==y:
+                    Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
+                    data["Hits"]+=1
+                else:
+                    Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
+                i+=2
+            computerTurn()
+    if data["Hits"]==12:
+        print("you win")#fix
+    you["yourShips"]=yourShips
+
+#other color: 00F5FF
 
 if __name__ == '__main__':
+    data={}
+    data["click"]=0
+    data["x1"]=0
+    data["y1"]=0
+    data["x2"]=0
+    data["y2"]=0
+    data["x3"]=0
+    data["y3"]=0
+    data["option1"]=0
+    data["option2"]=0
+    data["compHit"]=0
+    data["Hits"]=0
+    comp={"xmoves","ymoves","compShipsx","compShipsy"}
+    comp["xmoves"]=0
+    comp["ymoves"]=0
+    comp["compShipsx"]=0
+    comp["compShipsy"]=0
+    you={"yourShips"}
+    you["yourShips"]=0
+    Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
+    Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
+    Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
+    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(450,50))
+    Sprite(TextAsset("x3",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,50))
+    Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(410,100))
+    Sprite(TextAsset("x2",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,100))
     buildBoard()
     pickComputerShips()
 
-#second color:104E8B
-
 App().run()
+App().listenMouseEvent("click",mouseClick)
+
 #look at matrix demo
 #To delete all graphics, you can use a for loop.
 #for item in App().spritelist[:]:
