@@ -2,11 +2,6 @@
 #5/22/18
 #graphicsBattleship.py - Battleship with graphics
 
-#Questions:
-#How to make universal lists?
-
-
-
 from ggame import *
 from random import randint
 
@@ -42,9 +37,6 @@ def pickComputerShips():
     for i<=2:
         x=randint(0,9)
         y=randint(0,9)
-        for x*40 in compShipsx:
-            if y*40==compShipsy[compShipsx.index(x*40)]:
-                pickComputerShips()
         compShipsx.append(x*40)
         compShipsy.append(y*40)
         if x==9 and y==9:
@@ -166,6 +158,9 @@ def pickComputerShips():
                 compShipsx.append((x+1)*40)
                 compShipsy.append(y*40)
         i+=1
+###########        for x*40 in compShipsx:
+            if y*40==compShipsy[compShipsx.index(x*40)]:
+                pickComputerShips()
     comp["compShipsx"]=compShipsx
     comp["compShipsy"]=compShipsy
 
@@ -274,6 +269,7 @@ def mouseClick(event):
                 if comp["compShipsx"][i]==x and comp["compShipsy"][i]==y:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
                     data["Hits"]+=1
+                    """hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))"""
                 else:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
                 i+=2
@@ -298,12 +294,7 @@ if __name__ == '__main__':
     data["compHit"]=0
     data["Hits"]=0
     comp={"xmoves","ymoves","compShipsx","compShipsy"}
-    comp["xmoves"]=0
-    comp["ymoves"]=0
-    comp["compShipsx"]=0
-    comp["compShipsy"]=0
     you={"yourShips"}
-    you["yourShips"]=0
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
     Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
@@ -311,6 +302,10 @@ if __name__ == '__main__':
     Sprite(TextAsset("x3",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,50))
     Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(410,100))
     Sprite(TextAsset("x2",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,100))
+    Sprite(TextAsset("Hits=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(10,450))
+    Sprite(TextAsset("Hits=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(610,450))
+    Sprite(TextAsset("Misses=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(10,475))
+    Sprite(TextAsset("Misses=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(610,475))
     buildBoard()
     pickComputerShips()
 
