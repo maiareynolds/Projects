@@ -295,12 +295,15 @@ if __name__ == '__main__':
     data["y3"]=0
     data["option1"]=0
     data["option2"]=0
-    data["yourShips"]=0#what to do
-    data["compShips"]=0#what to do
     data["compHit"]=0
     data["Hits"]=0
     comp={"xmoves","ymoves","compShipsx","compShipsy"}
+    comp["xmoves"]=0
+    comp["ymoves"]=0
+    comp["compShipsx"]=0
+    comp["compShipsy"]=0
     you={"yourShips"}
+    you["yourShips"]=0
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
     Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
