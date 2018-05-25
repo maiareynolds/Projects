@@ -43,7 +43,7 @@ def pickComputerShips():
         x=randint(0,9)
         y=randint(0,9)
         for x*40 in compShipsx:
-            if y*40==compShipsy[compShipsy.index(x*40)]:
+            if y*40==compShipsy[compShipsx.index(x*40)]:
                 pickComputerShips()
         compShipsx.append(x*40)
         compShipsy.append(y*40)
@@ -271,7 +271,7 @@ def mouseClick(event):
             y=(event.y-event.y%40)
             i=0
             for i<=24:
-                if list(data["compShips"])[i]==x and list(data["compShips"])[i+1]==y:
+                if comp["compShipsx"][i]==x and comp["compShipsy"][i]==y:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
                     data["Hits"]+=1
                 else:
