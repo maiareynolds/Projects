@@ -158,8 +158,8 @@ def pickComputerShips():
                 compShipsx.append((x+1)*40)
                 compShipsy.append(y*40)
         i+=1
-###########        for x*40 in compShipsx:
-            if y*40==compShipsy[compShipsx.index(x*40)]:
+        for item in compShipsx:
+            if Compshipsx.count(item)>1 and compShipsy[compShipsx.index(item)]==y*40:
                 pickComputerShips()
     comp["compShipsx"]=compShipsx
     comp["compShipsy"]=compShipsy
