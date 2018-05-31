@@ -37,8 +37,20 @@ def pickComputerShips():
     for i<=2:
         x=randint(0,9)
         y=randint(0,9)
+        if len(compShipsx)>=1 and len(compShipsx)<5:
+            while x in compShipsx and y==compShipsy[compShipsx.index(x)]:
+                x=randint(0,9)
+                y=randint(0,9)
+        if len(compShipsx)>=5:
+            while x in compShipsx and y==compShipsy[compShipsx.index(x)] and (x-1) in compShipsx and y==compShipsy[compShipsx.index(x-1)] and (y-1) in compShipsy and x==compShipsx[compShipsy.index(y-1)] and (x+1) in compShipsx and y==compShipsy[compShipsx.index(x+1)] and (y+1) in compShipsy and x==compShipsx[compShipsy.index(y+1)]:
+                x=randint(0,9)
+                y=randint(0,9)
         compShipsx.append(x*40)
         compShipsy.append(y*40)
+        i+=1
+    print(compShipsx)
+    print(compShipsy)
+"""
         if x==9 and y==9:
             choice=randint(1,2)
             if choice==1:
@@ -162,7 +174,7 @@ def pickComputerShips():
             if Compshipsx.count(item)>1 and compShipsy[compShipsx.index(item)]==y*40:
                 pickComputerShips()
     comp["compShipsx"]=compShipsx
-    comp["compShipsy"]=compShipsy
+    comp["compShipsy"]=compShipsy"""
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
