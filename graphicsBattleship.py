@@ -50,7 +50,11 @@ def pickComputerShips():
         i+=1
     print(compShipsx)
     print(compShipsy)
+
 """
+def smile():
+    i=0
+    if i==0:
         if x==9 and y==9:
             choice=randint(1,2)
             if choice==1:
@@ -174,7 +178,7 @@ def pickComputerShips():
             if Compshipsx.count(item)>1 and compShipsy[compShipsx.index(item)]==y*40:
                 pickComputerShips()
     comp["compShipsx"]=compShipsx
-    comp["compShipsy"]=compShipsy"""
+    comp["compShipsy"]=compShipsy
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
@@ -281,7 +285,7 @@ def mouseClick(event):
                 if comp["compShipsx"][i]==x and comp["compShipsy"][i]==y:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
                     data["Hits"]+=1
-                    """hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))"""
+                    """"""hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))""""""
                 else:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
                 i+=2
@@ -289,7 +293,7 @@ def mouseClick(event):
     if data["Hits"]==12:
         print("you win")#fix
     you["yourShips"]=yourShips
-
+"""
 #other color: 00F5FF
 
 if __name__ == '__main__':
