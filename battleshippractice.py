@@ -38,7 +38,14 @@ def pickComputerShips():
         compShipsx.append((x*40))
         compShipsy.append((y*40))
 
+
+
         if x==9 and y==9:
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] and (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)]:
+                x=randint(0,9)
+                y=randint(0,9)
+            compShipsx.append((x*40))
+            compShipsy.append((y*40))
             if (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)]:
                 compShipsx.append(x*40)
                 compShipsy.append((y-1)*40)
