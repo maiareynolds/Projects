@@ -991,14 +991,6 @@ def pickComputerShips():
                     compShipsy.append((y+1)*40)
                     compShipsx.append(x*40)
                     compShipsy.append((y+2)*40)
-
-
-
-
-
-
-#################
-
         elif x==0 or x==1:
             while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))]:
                 x=randint(0,9)
