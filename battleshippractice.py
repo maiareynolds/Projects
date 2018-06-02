@@ -500,36 +500,65 @@ def pickComputerShips():
     while i>=2 and i<=4:
         x=randint(0,9)
         y=randint(0,9)
-        while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))+1]:
+        while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))]:
             x=randint(0,9)
             y=randint(0,9)
         if x==9 and y==9:
-            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] and (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)]:
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] and (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)] and (x-2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-2)*40)] and (y-2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-2)*40)]:
                 x=randint(0,9)
                 y=randint(0,9)
-            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x-2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-2)*40)] and (y-2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-2)*40)]:
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x-2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-2)*40)] and (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)]:
                 x=randint(0,9)
                 y=randint(0,9)
-            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))+1]:
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] and (y-2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-2)*40)]:
+                x=randint(0,9)
+                y=randint(0,9)
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))]:
                 x=randint(0,9)
                 y=randint(0,9)
             compShipsx.append((x*40))
             compShipsy.append((y*40))
             if (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] or (x-2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-2)*40)]:
                 compShipsx.append(x*40)
-                compShipsy.append((y-1)*40)#################
-            elif (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)]:
+                compShipsy.append((y-1)*40)
+                compShipsx.append(x*40)
+                compShipsy.append((y-2)*40)
+            elif (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)] or (y-2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-2)*40)]:
                 compShipsx.append((x-1)*40)
+                compShipsy.append(y*40)
+                compShipsx.append((x-2)*40)
                 compShipsy.append(y*40)
             else:
                 choice=randint(1,2)
                 if choice==1:
                     compShipsx.append((x-1)*40)
                     compShipsy.append(y*40)
+                    compShipsx.append((x-2)*40)
+                    compShipsy.append(y*40)
                 else:
                     compShipsx.append(x*40)
                     compShipsy.append((y-1)*40)
+                    compShipsx.append(x*40)
+                    compShipsy.append((y-2)*40)
+
+
+
+
+
         elif x==0 and y==0:
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x+1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x+1)*40)] and (y+1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+1)*40)] and (x+2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x+2)*40)] and (y+2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+2)*40)]:
+                x=randint(0,9)
+                y=randint(0,9)
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x+2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x+2)*40)] and (y+1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+1)*40)]:
+                x=randint(0,9)
+                y=randint(0,9)
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x+1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x+1)*40)] and (y+2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+2)*40)]:
+                x=randint(0,9)
+                y=randint(0,9)
+            while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))]:
+                x=randint(0,9)
+                y=randint(0,9)
+            
             if len(compShipsx)>=3:
                 while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))] and (x+1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x+1)*40)] and (y+1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+1)*40)]:
                     x=randint(0,9)
@@ -977,22 +1006,6 @@ def pickComputerShips():
 
 
 
-        x=randint(0,9)
-        y=randint(0,9)
-        compShipsx.append(x*40)
-        compShipsy.append(y*40)
-        if x==9 and y==9:
-            choice=randint(1,2)
-            if choice==1:
-                compShipsx.append((x-1)*40)
-                compShipsy.append(y*40)
-                compShipsx.append((x-2)*40)
-                compShipsy.append(y*40)
-            else:
-                compShipsx.append(x*40)
-                compShipsy.append((y-1)*40)
-                compShipsx.append(x*40)
-                compShipsy.append((y-2)*40)
         elif x==0 and y==0:
             choice=randint(1,2)
             if choice==1:
