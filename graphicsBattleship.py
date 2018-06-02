@@ -1112,12 +1112,8 @@ def pickComputerShips():
                     compShipsx.append((x-2)*40)
                     compShipsy.append((y)*40)
         i+=1
-    print(compShipsx)
-    print(compShipsy)
-pickComputerShips()
-"""
-    comp["compShipsx"]=compShipsx
-    comp["compShipsy"]=compShipsy"""
+    data["compShipsx"]=compShipsx
+    data["compShipsy"]=compShipsy
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
@@ -1126,24 +1122,22 @@ def computerTurn():
     xmoves=[]
     x=randint(0,9)
     y=randint(0,9)
-    for x*40 in xmoves:
-        if y*40==ymoves[xmoves.index(x*40)]:
-            computerTurn()
+    if len(xmoves)>=1:
+        while x*40 in xmoves and y*40==ymoves[xmoves.index(x*40)]:
+            x=randint(0,9)
+            y=randint(0,9)
     ymoves.append(y*40)
     xmoves.append(x*40)
-    point=False
-    for x*40 in yourShips:
-        if y*40==yourShips[yourShips.index(x*40)+1]:
-            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*40,y*40))
-            data["compHits"]+=1
-            point=True
-    if point==False:
+    miss=False
+    if x*40 in data["yourShips"] and y*40==data["yourShips"][data["yourShips"].index(x*4)+1]:
+        Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*40,y*40))
+        data["compHits"]+=1
+        miss=True
+    if miss==False:
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(x*40,y*40))
     if data["compHits"]==12:
         Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
-        Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))
-    comp["xmoves"]=xmoves
-    comp["ymoves"]=ymoves
+        Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))#fix
 
 #what row and column the user clicked (event.x and .y have the coordinates)
 #if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
@@ -1221,18 +1215,18 @@ def mouseClick(event):
             y=(event.y-event.y%40)
             i=0
             for i<=24:
-                if comp["compShipsx"][i]==x and comp["compShipsy"][i]==y:
+                if data["compShipsx"][i]==x and data["compShipsy"][i]==y:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
                     data["Hits"]+=1
-                    """"""hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))""""""
+                    #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
                 else:
                     Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
                 i+=2
             computerTurn()
     if data["Hits"]==12:
         print("you win")#fix
-    you["yourShips"]=yourShips
-"""
+    data["yourShips"]=yourShips
+
 #other color: 00F5FF
 
 if __name__ == '__main__':
@@ -1248,8 +1242,9 @@ if __name__ == '__main__':
     data["option2"]=0
     data["compHit"]=0
     data["Hits"]=0
-    comp={"xmoves","ymoves","compShipsx","compShipsy"}
-    you={"yourShips"}
+    data["compShipsx"]=0
+    data["compShipsy"]=0
+    data["yourShips"]=0
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
     Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
