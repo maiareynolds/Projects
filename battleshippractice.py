@@ -594,6 +594,7 @@ def pickComputerShips():
                     compShipsx.append(x*40)
                     compShipsy.append((y+2)*40)
         elif x==9 or x==8:
+#fix WHilES from this point!!!!!!!!!!!!!!!
             while (x*40) in compShipsx and (y*40)==compShipsy[compShipsx.index((x*40))]:
                 x=randint(0,9)
                 y=randint(0,9)
