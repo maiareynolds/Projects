@@ -1060,46 +1060,50 @@ def pickComputerShips():
             compShipsy.append((y*40))
             if (x+1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x+1)*40)] or (x+2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x+2)*40)]:
                 if (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)] or (y-2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-2)*40)]:
-                    compShipsx.append(x*40)
-                    compShipsy.append((y+1)*40)
-                    compShipsx.append(x*40)
-                    compShipsy.append((y+2)*40)
-                elif (y+1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+1)*40)] or (y+2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+2)*40)]:
-                    compShipsx.append(x*40)
-                    compShipsy.append((y-1)*40)
-                    compShipsx.append(x*40)
-                    compShipsy.append((y-2)*40)
-                else:
-                    choice=randint(1,2)
-                    if choice==1:
+                    if (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] or (x-2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-2)*40)]:
                         compShipsx.append(x*40)
                         compShipsy.append((y+1)*40)
                         compShipsx.append(x*40)
                         compShipsy.append((y+2)*40)
+                    elif (y+1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+1)*40)] or (y+2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+2)*40)]:
+                        compShipsx.append((x-1)*40)
+                        compShipsy.append((y)*40)
+                        compShipsx.append((x-2)*40)
+                        compShipsy.append((y)*40)
                     else:
-                        compShipsx.append(x*40)
-                        compShipsy.append((y-1)*40)
-                        compShipsx.append(x*40)
-                        compShipsy.append((y-2)*40)
+                        choice=randint(1,2)
+                        if choice==1:
+                            compShipsx.append(x*40)
+                            compShipsy.append((y+1)*40)
+                            compShipsx.append(x*40)
+                            compShipsy.append((y+2)*40)
+                        else:
+                            compShipsx.append((x-1)*40)
+                            compShipsy.append((y)*40)
+                            compShipsx.append((x-2)*40)
+                            compShipsy.append((y)*40)
             elif (y+1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+1)*40)] or (y+2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y+2)*40)]:
                 if (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)] or (y-2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-2)*40)]:
-                    compShipsx.append((x+1)*40)
-                    compShipsy.append(y*40)
-                    compShipsx.append((x+2)*40)
-                    compShipsy.append(y*40)
-                else:
-                    choice=randint(1,2)
-                    if choice==1:
+                    if (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] or (x-2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-2)*40)]:
                         compShipsx.append((x+1)*40)
                         compShipsy.append(y*40)
                         compShipsx.append((x+2)*40)
                         compShipsy.append(y*40)
                     else:
-                        compShipsx.append(x*40)
-                        compShipsy.append((y-1)*40)
-                        compShipsx.append(x*40)
-                        compShipsy.append((y-2)*40)
-            
+                        choice=randint(1,2)
+                        if choice==1:
+                            compShipsx.append((x+1)*40)
+                            compShipsy.append(y*40)
+                            compShipsx.append((x+2)*40)
+                            compShipsy.append(y*40)
+                        else:
+                            compShipsx.append((x-1)*40)
+                            compShipsy.append((y)*40)
+                            compShipsx.append((x-2)*40)
+                            compShipsy.append((y)*40)
+            elif (y-1)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-1)*40)] or (y-2)*40 in compShipsy and x*40==compShipsx[compShipsy.index((y-2)*40)]:
+                if (x-1)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-1)*40)] or (x-2)*40 in compShipsx and y*40==compShipsy[compShipsx.index((x-2)*40)]:
+                    
             
             
             
