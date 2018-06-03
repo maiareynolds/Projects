@@ -1117,27 +1117,23 @@ def pickComputerShips():
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
-def computerTurn():
+def computerTurn():########fix
     ymoves=[]
     xmoves=[]
+#    if data["compHits"]==0 and data["compMiss"]==0:
     x=randint(0,9)
     y=randint(0,9)
-    if len(xmoves)>=1:
-        while x*40 in xmoves and y*40==ymoves[xmoves.index(x*40)]:
-            x=randint(0,9)
-            y=randint(0,9)
+    while x*40 in xmoves and y*40==ymoves[xmoves.index(x*40)]:
+        x=randint(0,9)
+        y=randint(0,9)
     ymoves.append(y*40)
     xmoves.append(x*40)
-    while data["compHits"]==1:
-        
-    
-    miss=False
     if x*40 in data["yourShips"] and y*40==data["yourShips"][data["yourShips"].index(x*4)+1]:
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*40,y*40))
         data["compHits"]+=1
-        miss=True
-    if miss==False:
+    else:
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(x*40,y*40))
+        data["compMiss"]+=1
     if data["compHits"]==12:
         Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
         Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))#fix
@@ -1215,7 +1211,7 @@ def mouseClick(event):
                 data["click"]-=1
         data["yourShips"]=yourShips
     elif event.x>600 and event.y<400:
-        if data["click"]<=11:
+        if data["click"]>=11:
             x=(event.x-event.x%40)
             y=(event.y-event.y%40)
             if x*40 in data["compShipsx"] and y*40==data["compShipsy"][data["compShipsx"].index(x*40)]:
@@ -1224,10 +1220,13 @@ def mouseClick(event):
                 #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
             else:
                 Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
-                #miss
-            computerTurn()
-    if data["Hits"]==12:
-        print("you win")#fix
+                data["Miss"]+=1
+        if data["Hits"]==12:
+            print("you win")#fix
+        computerTurn()
+
+
+
 
 #other color: 00F5FF
 
@@ -1244,7 +1243,9 @@ if __name__ == '__main__':
     data["option2"]=0
     data["times"]=0
     data["compHit"]=0
+    data["compMiss"]=0
     data["Hits"]=0
+    data["Miss"]=0
     data["compShipsx"]=0
     data["compShipsy"]=0
     data["yourShips"]=0
