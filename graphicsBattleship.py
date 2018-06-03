@@ -1212,7 +1212,7 @@ def mouseClick(event):
         if data["click"]>=11:
             x=(event.x-event.x%40)
             y=(event.y-event.y%40)
-            if x*40 in data["compShipsx"] and y*40==data["compShipsy"][data["compShipsx"].index(x*40)]:
+            if x in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x)]:
                 Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
                 data["Hits"]+=1
                 #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
