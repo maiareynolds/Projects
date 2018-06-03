@@ -1207,21 +1207,21 @@ def mouseClick(event):
                 Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
             else:
                 data["click"]-=1
-        data["yourShips"]=yourShips
+    data["yourShips"]=yourShips
     elif event.x>600 and event.y<400:
-        if data["click"]>=11:
-            x=(event.x-event.x%40)
-            y=(event.y-event.y%40)
-            if x in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x)]:
-                Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
-                data["Hits"]+=1
-                #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
-            else:
-                Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
-                data["Miss"]+=1
+        x=(event.x-event.x%40)
+        y=(event.y-event.y%40)
+        if x in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x)]:
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
+            data["Hits"]+=1
+            #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
+        else:
+            Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
+            data["Miss"]+=1
         if data["Hits"]==12:
             Sprite(RectangleAsset(200,200,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)))
-        computerTurn()
+        else:
+            computerTurn()
 
 
 
