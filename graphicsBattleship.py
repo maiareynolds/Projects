@@ -1120,7 +1120,6 @@ def pickComputerShips():
 def computerTurn():########fix
     ymoves=[]
     xmoves=[]
-#    if data["compHits"]==0 and data["compMiss"]==0:
     x=randint(0,9)
     y=randint(0,9)
     while x*40 in xmoves and y*40==ymoves[xmoves.index(x*40)]:
@@ -1128,7 +1127,7 @@ def computerTurn():########fix
         y=randint(0,9)
     ymoves.append(y*40)
     xmoves.append(x*40)
-    if x*40 in data["yourShips"] and y*40==data["yourShips"][data["yourShips"].index(x*4)+1]:
+    if x*40 in data["yourShips"] and y*40==data["yourShips"][data["yourShips"].index(x*40)+1]:
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*40,y*40))
         data["compHits"]+=1
     else:
