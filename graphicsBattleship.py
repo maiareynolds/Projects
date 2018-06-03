@@ -1128,6 +1128,9 @@ def computerTurn():
             y=randint(0,9)
     ymoves.append(y*40)
     xmoves.append(x*40)
+    while data["compHits"]==1:
+        
+    
     miss=False
     if x*40 in data["yourShips"] and y*40==data["yourShips"][data["yourShips"].index(x*4)+1]:
         Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*40,y*40))
@@ -1138,6 +1141,7 @@ def computerTurn():
     if data["compHits"]==12:
         Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
         Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))#fix
+    data["times"]+=1
 
 #what row and column the user clicked (event.x and .y have the coordinates)
 #if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
@@ -1238,6 +1242,7 @@ if __name__ == '__main__':
     data["y3"]=0
     data["option1"]=0
     data["option2"]=0
+    data["times"]=0
     data["compHit"]=0
     data["Hits"]=0
     data["compShipsx"]=0
