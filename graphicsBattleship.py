@@ -1112,15 +1112,15 @@ def pickComputerShips():
                     compShipsx.append((x-2)*40)
                     compShipsy.append((y)*40)
         i+=1
-    data["compShipsx"].append(compShipsx)
-    data["compShipsy"].append(compShipsy)
+    data["compShipsx"]=compShipsx
+    data["compShipsy"]=compShipsy
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
 def computerTurn():########fix
     x=randint(0,9)
     y=randint(0,9)
-    while x*40 in xmoves and y*40==ymoves[xmoves.index(x*40)]:
+    while x*40 in data["xmoves"] and y*40==data["ymoves"][data["xmoves"].index(x*40)]:
         x=randint(0,9)
         y=randint(0,9)
     data["ymoves"].append(y*40)
@@ -1261,6 +1261,11 @@ if __name__ == '__main__':
 
 App().run()
 App().listenMouseEvent("click",mouseClick)
+
+#NOT ALL COPM SHIPS IN LIST
+#LONG MY SHIPS NOT IN LIST ETS
+
+
 
 #look at matrix demo
 #To delete all graphics, you can use a for loop.
