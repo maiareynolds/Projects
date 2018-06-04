@@ -1120,9 +1120,10 @@ def pickComputerShips():
 def computerTurn():########fix
     x=randint(0,9)
     y=randint(0,9)
-    while x*40 in data["xmoves"] and y*40==data["ymoves"][data["xmoves"].index(x*40)]:
-        x=randint(0,9)
-        y=randint(0,9)
+    if len(data["xmoves"]>=1:
+        while x*40 in data["xmoves"] and y*40==data["ymoves"][data["xmoves"].index(x*40)]:
+            x=randint(0,9)
+            y=randint(0,9)
     data["ymoves"].append(y*40)
     data["xmoves"].append(x*40)
     if (x*40) in data["yourShipsx"] and y*40==data["yourShipsy"][data["yourShipsx"].index((x*40))]:
@@ -1178,29 +1179,23 @@ def mouseClick(event):
             data["option2"].destroy()
             data["x2"]=(event.x-event.x%40)
             data["y2"]=(event.y-event.y%40)
+            data["yourShipsx"].append(data["x2"])
+            data["yourShipsy"].append(data["y2"])
             if data["x2"]==data["x1"]-80:
                 data["yourShipsx"].append((data["x1"]-40))
                 data["yourShipsy"].append(data["y1"])
-                data["yourShipsx"].append(data["x2"])
-                data["yourShipsy"].append(data["y2"])
                 Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
             elif data["x2"]==data["x1"]+80:
                 data["yourShipsx"].append((data["x1"]+40))
                 data["yourShipsy"].append(data["y1"])
-                data["yourShipsx"].append(data["x2"])
-                data["yourShipsy"].append(data["y2"])
                 Sprite(RectangleAsset(120,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
             elif data["y2"]==data["y1"]-80:
                 data["yourShipsx"].append((data["x1"]))
                 data["yourShipsy"].append((data["y1"]-40))
-                data["yourShipsx"].append(data["x2"])
-                data["yourShipsy"].append(data["y2"])
                 Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
             elif data["y2"]==data["y1"]+80:
                 data["yourShipsx"].append((data["x1"]))
                 data["yourShipsy"].append((data["y1"]+40))
-                data["yourShipsx"].append(data["x2"])
-                data["yourShipsy"].append(data["y2"])
                 Sprite(RectangleAsset(40,120,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
             else:
                 data["click"]-=1
@@ -1214,10 +1209,10 @@ def mouseClick(event):
         else:
             Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
             data["Miss"]+=1
-        if data["Hits"]==12:
-            Sprite(RectangleAsset(200,200,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)))
-        else:
+        if data["Hits"]<=11:
             computerTurn()
+        else:
+            Sprite(RectangleAsset(200,200,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)))
 
 
 
