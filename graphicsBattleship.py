@@ -921,7 +921,7 @@ def pickComputerShips():
                 else:
                     compShipsx.append((x+1)*40)
                     compShipsy.append((y)*40)
-                    compShipsx.append((x+1)*40)
+                    compShipsx.append((x+2)*40)
                     compShipsy.append((y)*40)
             else:
                 choice=randint(1,3)
