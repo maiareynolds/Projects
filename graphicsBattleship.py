@@ -1120,7 +1120,7 @@ def pickComputerShips():
 def computerTurn():########fix
     x=randint(0,9)
     y=randint(0,9)
-    if len(data["xmoves"]>=1:
+    if len(data["xmoves"])>=1:
         while x*40 in data["xmoves"] and y*40==data["ymoves"][data["xmoves"].index(x*40)]:
             x=randint(0,9)
             y=randint(0,9)
