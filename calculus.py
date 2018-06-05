@@ -15,7 +15,7 @@ while len(functions)>0:
     for item in functions:
         if item>=i:
             i=item
-    newlist.append(list1[functions.index(i)])
+    newlist.append(list1[functions1.index(i)])
     functions.remove(i)
 
 print(newlist)
