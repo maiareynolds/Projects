@@ -4,7 +4,7 @@ from math import *
 list1=["e**(x/2)","e**(x)","(log(x)/log(e))**x","x**x"]
 num=[]
 
-x=100000
+x=100
 functions=[e**(x/2),e**(x),(log(x)/log(e))**x,x**x]
 functions1=[e**(x/2),e**(x),(log(x)/log(e))**x,x**x]
 l=len(functions)
