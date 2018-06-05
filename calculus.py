@@ -1,10 +1,16 @@
 from math import *
 #f=[e**(x/2),e**(x),(log(x)/log(e))**x,x**x]
 
+
+
+
+
+
+"""
 list1=["e**(x/2)","e**(x)","(log(x)/log(e))**x","x**x"]
 num=[]
 
-x=100
+x=10000
 functions=[e**(x/2),e**(x),(log(x)/log(e))**x,x**x]
 functions1=[e**(x/2),e**(x),(log(x)/log(e))**x,x**x]
 l=len(functions)
@@ -19,7 +25,7 @@ while len(functions)>0:
     functions.remove(i)
 
 print(newlist)
-
+"""
 
 """
 while 0<len(functions):
