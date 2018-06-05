@@ -5,8 +5,10 @@ num=[]
 
 x=100
 functions=[e**(x/2),e**(x),(log(x)/log(e))**x,x**x]
+functions1=[e**(x/2),e**(x),(log(x)/log(e))**x,x**x]
 l=len(functions)
 newlist=[]
+newlist1=[]
 
 """
 while l!=len(newlist):
@@ -17,12 +19,15 @@ while l!=len(newlist):
             functions.remove(item)
 """
 
-while l!=len(newlist):
+while l>=len(newlist):
     for item in functions:
         if item==max(functions):
-            num.append(functions.index(item))
+            num.append(functions1.index(item))
+            newlist.append(item)
             functions.remove(item)
-    for item in num:
-        newlist.append(list1[item])
+for item in num:
+    newlist1.append(list1[item])
 
-print(newlist)
+
+
+print(newlist1)
