@@ -38,28 +38,28 @@ def pickComputerShips():
         x=randint(1,4)
         y=randint(1,4)
         if len(compShipsx)>=1:
-            while (x*80) in compShipsx and (y*80)==compShipsy[compShipsx.index((x*80))]:
+            while (x*80)+40 in compShipsx and ((y*80))==compShipsy[compShipsx.index((x*80)+40)]:
                 x=randint(1,4)
                 y=randint(1,4)
         if len(compShipsx)>=3:
-            while (x*80) in compShipsx and (y*80)==compShipsy[compShipsx.index((x*80))] and (x-1)*80 in compShipsx and y*80==compShipsy[compShipsx.index((x-1)*80)] and (y-1)*80 in compShipsy and x*80==compShipsx[compShipsy.index((y-1)*80)]:
+            while (x*80)+40 in compShipsx and ((y*80))==compShipsy[compShipsx.index((x*80)+40)] and ((x-1)*80)+40 in compShipsx and y*80==compShipsy[compShipsx.index(((x-1)*80)+40)] and (y-1)*80 in compShipsy and (x*80)+40==compShipsx[compShipsy.index((y-1)*80)]:
                 x=randint(1,4)
                 y=randint(1,4)
-        compShipsx.append(x*80)
-        compShipsy.append(y*80)
-        if (x-1)*80 in compShipsx and y*80==compShipsy[compShipsx.index((x-1)*80)]:
-            compShipsx.append(x*80)
+        compShipsx.append((x*80)+40)
+        compShipsy.append((y*80)+40)
+        if ((x-1)*80)+40 in compShipsx and y*80==compShipsy[compShipsx.index(((x-1)*80)+40)]:
+            compShipsx.append((x*80)+40)
             compShipsy.append((y-1)*80)
-        elif (y-1)*80 in compShipsy and x*80==compShipsx[compShipsy.index((y-1)*80)]:
-            compShipsx.append((x-1)*80)
+        elif (y-1)*80 in compShipsy and (x*80)+40==compShipsx[compShipsy.index((y-1)*80)]:
+            compShipsx.append(((x-1)*80)+40)
             compShipsy.append(y*80)
         else:
             choice=randint(1,2)
             if choice==1:
-                compShipsx.append((x-1)*80)
+                compShipsx.append(((x-1)*80)+40)
                 compShipsy.append(y*80)
             else:
-                compShipsx.append(x*80)
+                compShipsx.append((x*80)+40)
                 compShipsy.append((y-1)*80)
         i+=1
     data["compShipsx"]=compShipsx
@@ -121,12 +121,12 @@ def mouseClick(event):
     elif event.x>=600 and event.y<=400 and event.y>=0 and event.x<=1000:
         x=(event.x-event.x%80)
         y=(event.y-event.y%80)
-        if x-600 in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x-600)]:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
+        if x-640 in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x-640)]:
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x+40,y))
             data["Hits"]+=1
             #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
         else:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x+40,y))
             data["Miss"]+=1
         if data["Hits"]<=6:
             computerTurn()
