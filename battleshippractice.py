@@ -48,18 +48,18 @@ def pickComputerShips():
         compShipsx.append(x*80)
         compShipsy.append(y*80)
         if (x-1)*80 in compShipsx and y*80==compShipsy[compShipsx.index((x-1)*80)]:
-            compShipsx.append(x)
+            compShipsx.append(x*80)
             compShipsy.append((y-1)*80)
         elif (y-1)*80 in compShipsy and x*80==compShipsx[compShipsy.index((y-1)*80)]:
             compShipsx.append((x-1)*80)
-            compShipsy.append(y)
+            compShipsy.append(y*80)
         else:
             choice=randint(1,2)
             if choice==1:
                 compShipsx.append((x-1)*80)
-                compShipsy.append(y)
+                compShipsy.append(y*80)
             else:
-                compShipsx.append(x)
+                compShipsx.append(x*80)
                 compShipsy.append((y-1)*80)
         i+=1
     data["compShipsx"]=compShipsx
