@@ -62,6 +62,8 @@ def pickComputerShips():
                 compShipsx.append((x*80)+40)
                 compShipsy.append((y-1)*80)
         i+=1
+    for item in compShipsx:
+        Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x+600,compShipsy(compShipsx.index(item))))
     data["compShipsx"]=compShipsx
     data["compShipsy"]=compShipsy
 
