@@ -84,7 +84,7 @@ def computerTurn():########fix
     else:
         Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(x*80,y*80))
         data["compMiss"]+=1
-    if data["compHit"]>=12:
+    if data["compHit"]>=6:
         Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
         Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))#fix
 
@@ -118,10 +118,10 @@ def mouseClick(event):
                 Sprite(RectangleAsset(80,160,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
             else:
                 data["click"]-=1
-    elif event.x>=600 and event.y<=400:
+    elif event.x>=620 and event.y<=400:
         x=(event.x-event.x%80)
         y=(event.y-event.y%80)
-        if x-600 in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x-600)]:
+        if x-620 in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x-620)]:
             Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
             data["Hits"]+=1
             #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
