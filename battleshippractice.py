@@ -35,16 +35,16 @@ def pickComputerShips():
     compShipsy=[]
     i=0
     while i<=2:
-        x=randint(1,9)
-        y=randint(1,9)
+        x=randint(1,4)
+        y=randint(1,4)
         if len(compShipsx)>=1:
             while (x*80) in compShipsx and (y*80)==compShipsy[compShipsx.index((x*80))]:
-                x=randint(1,9)
-                y=randint(1,9)
+                x=randint(1,4)
+                y=randint(1,4)
         if len(compShipsx)>=3:
             while (x*80) in compShipsx and (y*80)==compShipsy[compShipsx.index((x*80))] and (x-1)*80 in compShipsx and y*80==compShipsy[compShipsx.index((x-1)*80)] and (y-1)*80 in compShipsy and x*80==compShipsx[compShipsy.index((y-1)*80)]:
-                x=randint(1,9)
-                y=randint(1,9)
+                x=randint(1,4)
+                y=randint(1,4)
         compShipsx.append(x*80)
         compShipsy.append(y*80)
         if (x-1)*80 in compShipsx and y*80==compShipsy[compShipsx.index((x-1)*80)]:
@@ -70,12 +70,12 @@ def pickComputerShips():
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
 def computerTurn():########fix
-    x=randint(0,9)
-    y=randint(0,9)
+    x=randint(0,4)
+    y=randint(0,4)
     if len(data["xmoves"])>=1:
         while x*80 in data["xmoves"] and y*80==data["ymoves"][data["xmoves"].index(x*80)]:
-            x=randint(0,9)
-            y=randint(0,9)
+            x=randint(0,4)
+            y=randint(0,4)
     data["ymoves"].append(y*80)
     data["xmoves"].append(x*80)
     if (x*80) in data["yourShipsx"] and y*80==data["yourShipsy"][data["yourShipsx"].index((x*80))]:
