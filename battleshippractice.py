@@ -122,11 +122,11 @@ def mouseClick(event):
         x=(event.x-event.x%80)
         y=(event.y-event.y%80)
         if x-600 in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x-600)]:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x-40,y))
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x+40,y))
             data["Hits"]+=1
             #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
         else:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x-40,y))
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x+40,y))
             data["Miss"]+=1
         if data["Hits"]<=11:
             computerTurn()
