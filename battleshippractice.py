@@ -32,55 +32,27 @@ def redrawAll():
 #The computer should not be able to put two ships on top of each other
 def pickComputerShips():
     i=0
-    while i<=2:
-        x=randint(1,4)
-        y=randint(1,4)
-        if len(data["compShipsx"])>=2:
-            while (x*80) in data["compShipsx"] and ((y*80))==data["compShipsy"][data["compShipsx"].index((x*80))] and ((x-1)*80) in data["compShipsx"] and y*80==data["compShipsy"][data["compShipsx"].index(((x-1)*80))] and (y-1)*80 in data["compShipsy"] and (x*80)==data["compShipsx"][data["compShipsy"].index((y-1)*80)]:
-                x=randint(1,4)
-                y=randint(1,4)
-            if len(data["compShipsx"])>=3:
-                while (x*80) in data["compShipsx"] and ((y*80))==data["compShipsy"][data["compShipsx"].index((x*80))]:
+    xl=[]
+    yl=[]
+    while i<=4:
+        x=randint(0,4)
+        y=randint(0,4)
+        if len(xl)>0:
+            if x in xl and y==yl[xl.index(x)]:
+                while x in xl and y==yl[xl.index(x)]:
                     x=randint(1,4)
                     y=randint(1,4)
-            data["compShipsx"].append((x*80))
-            data["compShipsy"].append((y*80))
-            if ((x-1)*80) in data["compShipsx"] and y*80==data["compShipsy"][data["compShipsx"].index(((x-1)*80))]:
-                data["compShipsx"].append((x*80))
-                data["compShipsy"].append((y-1)*80)
-            elif (y-1)*80 in data["compShipsy"] and (x*80)==data["compShipsx"][data["compShipsy"].index((y-1)*80)]:
-                data["compShipsx"].append(((x-1)*80))
-                data["compShipsy"].append(y*80)
-            else:
-                choice=randint(1,2)
-                if choice==1:
-                    data["compShipsx"].append(((x-1)*80))
-                    data["compShipsy"].append(y*80)
-                else:
-                    data["compShipsx"].append((x*80))
-                    data["compShipsy"].append((y-1)*80)
-        else:
-            data["compShipsx"].append((x*80))
-            data["compShipsy"].append((y*80))
-            choice=randint(1,2)
-            if choice==1:
-                data["compShipsx"].append(((x-1)*80))
-                data["compShipsy"].append(y*80)
-            else:
-                data["compShipsx"].append((x*80))
-                data["compShipsy"].append((y-1)*80)
+        xl.append(x)
+        yl.append(y)
         i+=1
-    for item in data["compShipsx"]:
-        if data["compShipsx"].index(item)>2:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(item+600,data["compShipsy"][data["compShipsx"].index(item)]))
-        else:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(item+600,data["compShipsy"][data["compShipsx"].index(item)]))
-
+    for item in xl:
+        data["compShipsx"].append(item*80)
+        data["compShipsy"].append(yl[xl.index(item)]*80)
 
 
 #The function should have the computer pick a random spot to guess and process the guess if it is a valid move.
 #This function should also detect if the computer won.
-def computerTurn():########fix
+def computerTurn():
     x=randint(0,4)
     y=randint(0,4)
     if len(data["xmoves"])>=1:
@@ -93,56 +65,35 @@ def computerTurn():########fix
         Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(x*80,y*80))
         data["compHit"]+=1
     else:
-        Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(x*80,y*80))
-        data["compMiss"]+=1
-    if data["compHit"]>=6:
-        Sprite(RectangleAsset(1000,1000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
-        Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))#fix
+        Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0x000000,1)),(x*80,y*80))
+    if data["compHit"]>=5:
+        Sprite(RectangleAsset(2000,2000,LineStyle(1,Color(0x000000,1)),Color(0x000000,1)))
+        Sprite(TextAsset("YouLose",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))
 
 #what row and column the user clicked (event.x and .y have the coordinates)
 #if player hasnt placed ships, place ship, if has placed ship, process user's guess if valid and detect if player won
 def mouseClick(event):
     data["click"]+=1
     if event.x<400 and event.y<400:
-        if data["click"]==1 or data["click"]==3 or data["click"]==5:
+        if data["click"]<=5:
             data["x1"]=(event.x-event.x%80)
             data["y1"]=(event.y-event.y%80)
             data["yourShipsx"].append(data["x1"])
             data["yourShipsy"].append(data["y1"])
-            data["option1"]=Sprite(RectangleAsset(240,80,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"]-80,data["y1"]))
-            data["option2"]=Sprite(RectangleAsset(80,240,LineStyle(3,Color(0x104E8B,1)),Color(0xEE82EE,1)),(data["x1"],data["y1"]-80))
             Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
-        elif data["click"]==2 or data["click"]==4 or data["click"]==6:
-            data["option1"].destroy()
-            data["option2"].destroy()
-            data["x2"]=(event.x-event.x%80)
-            data["y2"]=(event.y-event.y%80)
-            data["yourShipsx"].append(data["x2"])
-            data["yourShipsy"].append(data["y2"])
-            if data["x2"]==data["x1"]-80:
-                Sprite(RectangleAsset(160,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
-            elif data["x2"]==data["x1"]+80:
-                Sprite(RectangleAsset(160,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
-            elif data["y2"]==data["y1"]-80:
-                Sprite(RectangleAsset(80,160,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x2"],data["y2"]))
-            elif data["y2"]==data["y1"]+80:
-                Sprite(RectangleAsset(80,160,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(data["x1"],data["y1"]))
-            else:
-                data["click"]-=1
     elif event.x>=600 and event.y<=400 and event.y>=0 and event.x<=1000:
-        x=(event.x-event.x%80)
+        x=(event.x-((event.x-600)%80))
         y=(event.y-event.y%80)
-        if x-640 in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x-640)]:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x+40,y))
+        if x-600 in data["compShipsx"] and y==data["compShipsy"][data["compShipsx"].index(x-600)]:
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x,y))
             data["Hits"]+=1
-            #hits=Sprite(TextAsset(data["Hits"],fill=Color(0xFF3030,1),style="20pt Georgia bold"),(50,450))
         else:
-            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x+40,y))
-            data["Miss"]+=1
-        if data["Hits"]<=6:
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0x00F5FF,1)),(x,y))
+        if data["Hits"]<5:
             computerTurn()
         else:
-            Sprite(RectangleAsset(200,200,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)))
+            Sprite(RectangleAsset(2000,2000,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)))
+            Sprite(TextAsset("YouWin",fill=Color(0xFFFFFF,1),style="40pt Times bold"),(490,250))
 
 
 
@@ -163,9 +114,7 @@ if __name__ == '__main__':
     data["xmoves"]=[]
     data["ymoves"]=[]
     data["compHit"]=0
-    data["compMiss"]=0
     data["Hits"]=0
-    data["Miss"]=0
     data["compShipsx"]=[]
     data["compShipsy"]=[]
     data["yourShipsx"]=[]
@@ -173,12 +122,8 @@ if __name__ == '__main__':
     Sprite(TextAsset("Computer",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(725,400))
     Sprite(TextAsset("You",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(170,400))
     Sprite(TextAsset("Ships",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(455,0))
-    Sprite(RectangleAsset(80,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(450,50))
-    Sprite(TextAsset("x3",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(535,50))
-    Sprite(TextAsset("Hits=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(10,450))
-    Sprite(TextAsset("Hits=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(610,450))
-    Sprite(TextAsset("Misses=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(10,475))
-    Sprite(TextAsset("Misses=",fill=Color(0xFF3030,1),style="20pt Georgia bold"),(610,475))
+    Sprite(RectangleAsset(40,40,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(450,50))
+    Sprite(TextAsset("x5",fill=Color(0xFF3030,1),style="30pt Georgia bold"),(495,50))
     buildBoard()
     pickComputerShips()
 
