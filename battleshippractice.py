@@ -71,7 +71,10 @@ def pickComputerShips():
                 data["compShipsy"].append((y-1)*80)
         i+=1
     for item in data["compShipsx"]:
-        Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(item+600,data["compShipsy"][data["compShipsx"].index(item)]))
+        if data["compShipsx"].index(item)>2:
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(item+600,data["compShipsy"][data["compShipsx"].index(item)]))
+        else:
+            Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF0000,1)),(item+600,data["compShipsy"][data["compShipsx"].index(item)]))
 
 
 
