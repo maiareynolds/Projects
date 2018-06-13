@@ -1,6 +1,6 @@
 #Maia Reynolds
 #5/22/18
-#graphicsBattleship.py - Battleship with graphics
+#battleshippractice.py - Battleship with graphics
 
 from ggame import *
 from random import randint
