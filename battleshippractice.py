@@ -35,24 +35,33 @@ def pickComputerShips():
     while i<=2:
         x=randint(1,4)
         y=randint(1,4)
-
-        if len(data["compShipsx"])>=1:
-            while (x*80) in data["compShipsx"] and ((y*80))==data["compShipsy"][data["compShipsx"].index((x*80))]:
-                x=randint(1,4)
-                y=randint(1,4)
-        if len(data["compShipsx"])>=3:
+        if len(data["compShipsx"])>=2:
             while (x*80) in data["compShipsx"] and ((y*80))==data["compShipsy"][data["compShipsx"].index((x*80))] and ((x-1)*80) in data["compShipsx"] and y*80==data["compShipsy"][data["compShipsx"].index(((x-1)*80))] and (y-1)*80 in data["compShipsy"] and (x*80)==data["compShipsx"][data["compShipsy"].index((y-1)*80)]:
                 x=randint(1,4)
                 y=randint(1,4)
-        data["compShipsx"].append((x*80))
-        data["compShipsy"].append((y*80))
-        if ((x-1)*80) in data["compShipsx"] and y*80==data["compShipsy"][data["compShipsx"].index(((x-1)*80))]:
+            if len(data["compShipsx"])>=3:
+                while (x*80) in data["compShipsx"] and ((y*80))==data["compShipsy"][data["compShipsx"].index((x*80))]:
+                    x=randint(1,4)
+                    y=randint(1,4)
             data["compShipsx"].append((x*80))
-            data["compShipsy"].append((y-1)*80)
-        elif (y-1)*80 in data["compShipsy"] and (x*80)==data["compShipsx"][data["compShipsy"].index((y-1)*80)]:
-            data["compShipsx"].append(((x-1)*80))
-            data["compShipsy"].append(y*80)
+            data["compShipsy"].append((y*80))
+            if ((x-1)*80) in data["compShipsx"] and y*80==data["compShipsy"][data["compShipsx"].index(((x-1)*80))]:
+                data["compShipsx"].append((x*80))
+                data["compShipsy"].append((y-1)*80)
+            elif (y-1)*80 in data["compShipsy"] and (x*80)==data["compShipsx"][data["compShipsy"].index((y-1)*80)]:
+                data["compShipsx"].append(((x-1)*80))
+                data["compShipsy"].append(y*80)
+            else:
+                choice=randint(1,2)
+                if choice==1:
+                    data["compShipsx"].append(((x-1)*80))
+                    data["compShipsy"].append(y*80)
+                else:
+                    data["compShipsx"].append((x*80))
+                    data["compShipsy"].append((y-1)*80)
         else:
+            data["compShipsx"].append((x*80))
+            data["compShipsy"].append((y*80))
             choice=randint(1,2)
             if choice==1:
                 data["compShipsx"].append(((x-1)*80))
