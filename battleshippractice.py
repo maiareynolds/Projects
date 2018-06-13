@@ -31,41 +31,38 @@ def redrawAll():
 #Has the computer pick 5 random spaces for their ships.
 #The computer should not be able to put two ships on top of each other
 def pickComputerShips():
-    compShipsx=[]
-    compShipsy=[]
     i=0
     while i<=2:
         x=randint(1,4)
         y=randint(1,4)
-        if len(compShipsx)>=1:
-            while (x*80)+40 in compShipsx and ((y*80))==compShipsy[compShipsx.index((x*80)+40)]:
+
+        if len(data["compShipsx"])>=1:
+            while (x*80) in data["compShipsx"] and ((y*80))==data["compShipsy"][data["compShipsx"].index((x*80))]:
                 x=randint(1,4)
                 y=randint(1,4)
-        if len(compShipsx)>=3:
-            while (x*80)+40 in compShipsx and ((y*80))==compShipsy[compShipsx.index((x*80)+40)] and ((x-1)*80)+40 in compShipsx and y*80==compShipsy[compShipsx.index(((x-1)*80)+40)] and (y-1)*80 in compShipsy and (x*80)+40==compShipsx[compShipsy.index((y-1)*80)]:
+        if len(data["compShipsx"])>=3:
+            while (x*80) in data["compShipsx"] and ((y*80))==data["compShipsy"][data["compShipsx"].index((x*80))] and ((x-1)*80) in data["compShipsx"] and y*80==data["compShipsy"][data["compShipsx"].index(((x-1)*80))] and (y-1)*80 in data["compShipsy"] and (x*80)==data["compShipsx"][data["compShipsy"].index((y-1)*80)]:
                 x=randint(1,4)
                 y=randint(1,4)
-        compShipsx.append((x*80)+40)
-        compShipsy.append((y*80)+40)
-        if ((x-1)*80)+40 in compShipsx and y*80==compShipsy[compShipsx.index(((x-1)*80)+40)]:
-            compShipsx.append((x*80)+40)
-            compShipsy.append((y-1)*80)
-        elif (y-1)*80 in compShipsy and (x*80)+40==compShipsx[compShipsy.index((y-1)*80)]:
-            compShipsx.append(((x-1)*80)+40)
-            compShipsy.append(y*80)
+        data["compShipsx"].append((x*80))
+        data["compShipsy"].append((y*80))
+        if ((x-1)*80) in data["compShipsx"] and y*80==data["compShipsy"][data["compShipsx"].index(((x-1)*80))]:
+            data["compShipsx"].append((x*80))
+            data["compShipsy"].append((y-1)*80)
+        elif (y-1)*80 in data["compShipsy"] and (x*80)==data["compShipsx"][data["compShipsy"].index((y-1)*80)]:
+            data["compShipsx"].append(((x-1)*80))
+            data["compShipsy"].append(y*80)
         else:
             choice=randint(1,2)
             if choice==1:
-                compShipsx.append(((x-1)*80)+40)
-                compShipsy.append(y*80)
+                data["compShipsx"].append(((x-1)*80))
+                data["compShipsy"].append(y*80)
             else:
-                compShipsx.append((x*80)+40)
-                compShipsy.append((y-1)*80)
+                data["compShipsx"].append((x*80))
+                data["compShipsy"].append((y-1)*80)
         i+=1
-    for item in compShipsx:
-        Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(x+600,compShipsy(compShipsx.index(item))))
-    data["compShipsx"]=compShipsx
-    data["compShipsy"]=compShipsy
+    for item in data["compShipsx"]:
+        Sprite(RectangleAsset(80,80,LineStyle(3,Color(0x104E8B,1)),Color(0xFF3E96,1)),(item+600,data["compShipsy"][data["compShipsx"].index(item)]))
 
 
 
